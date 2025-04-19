@@ -11,7 +11,6 @@ public class CalculadoraDePrecios {
 	   private double precioBaseFastPass;
 	   
 	   private double descuentoParaEmpleados; 
-	   private double hernando;
 
 	   private Map<CategoriaExclusividad, Double> multiplicadorExclusividad;
 	   private Map<UnidadTiempo, Double> descuentoPorDuracion;
