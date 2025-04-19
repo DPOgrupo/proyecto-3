@@ -5,15 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Empleado {
-    protected String login;
+    protected int ID;
+	protected String login;
     protected String contraseña;
     protected List<String> capacitaciones;
     protected List<Turno> turnosAsignados;
     protected int dinero;
 
     
-    public Empleado(String login, String contraseña, int dinero) {
-        this.login = login;
+    public Empleado(int ID,String login, String contraseña, int dinero) {
+        
+    	this.ID = ID;
+    	this.login = login;
         this.contraseña = contraseña;
         this.dinero = dinero;
         this.capacitaciones = new ArrayList<>();
@@ -63,10 +66,6 @@ public abstract class Empleado {
 		
 	}
 
-	public void setDinero(int cantidad) { 
-    	
-    	this.dinero = cantidad; 
-    }
 
 	public void setLogin(String login) {
 		
@@ -99,6 +98,13 @@ public abstract class Empleado {
         	
             dinero -= cantidad;
         }
+    }
+    
+    public void añadirDinero(int cantidad) {
+    	
+        	
+            dinero += cantidad;
+        
     }
     
     

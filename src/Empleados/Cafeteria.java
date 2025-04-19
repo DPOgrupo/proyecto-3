@@ -54,6 +54,7 @@ public class Cafeteria extends LugarDeServicio {
         } else {
             System.out.println("El empleado no tiene capacitación en cocina.");
         }
+        setDisponible();
     }
 
     public void quitarCocinero(Empleado empleado) {
@@ -61,6 +62,7 @@ public class Cafeteria extends LugarDeServicio {
             cocinerosAsociados.remove(empleado);
             setDisponible();
         }
+        setDisponible();
     }
 
 
@@ -68,7 +70,7 @@ public class Cafeteria extends LugarDeServicio {
 		return cocinerosAsociados;
 	}
 
-	public int getNumeroAlmuerzos() {
+	public int getNumeroComidas() {
 		return numeroAlmuerzos;
 	}
     

@@ -3,8 +3,8 @@ package Empleados;
 public class Cajero extends Empleado {
 	
 	
-    public Cajero(String login, String contraseña, int dinero) {
-        super(login, contraseña, dinero);
+    public Cajero(int ID,String login, String contraseña, int dinero) {
+        super(ID,login, contraseña, dinero);
     }
 
 

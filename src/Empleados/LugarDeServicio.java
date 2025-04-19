@@ -27,7 +27,7 @@ public abstract class LugarDeServicio {
         if (!cajerosAsociados.contains(empleado)) {
         	
             cajerosAsociados.add(empleado);
-            
+            setDisponible();
         } 
         
         else {
@@ -46,6 +46,7 @@ public abstract class LugarDeServicio {
         	
             System.out.println("El empleado no está asociado como cajero.");
         }
+        setDisponible();
     }
 
     public boolean isDisponible() {

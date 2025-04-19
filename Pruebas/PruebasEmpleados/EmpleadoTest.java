@@ -1,4 +1,4 @@
-package Prueba;
+package PruebasEmpleados;
 
 import Empleados.*;
 
@@ -20,7 +20,7 @@ public class EmpleadoTest {
 	
 	@Test
     public void testAñadirCapacitacion() {
-        Empleado empleado1 = new Cajero("usuario", "1234", 0);
+        Empleado empleado1 = new Cajero(1,"usuario", "1234", 0);
         empleado1.añadirCapacitacion("COCINA");
         assertFalse(!empleado1.estaCapacitado("COCINA"));
     }
@@ -28,7 +28,7 @@ public class EmpleadoTest {
 	@Test
 	public void noDebeAñadirCapacitacionDuplicada() {
 		
-	    Empleado empleado1 = new Cajero("usuario", "1234", 0);
+	    Empleado empleado1 = new Cajero(1,"usuario", "1234", 0);
 	    empleado1.añadirCapacitacion("COCINA");
 	    empleado1.añadirCapacitacion("COCINA");
 	    assertEquals(1, empleado1.getCapacitaciones().size());
@@ -37,7 +37,7 @@ public class EmpleadoTest {
 	
     @Test
     public void testVerificarContraseñaCorrecta() {
-        Empleado empleado1 = new Cajero("usuario", "1234", 0);
+        Empleado empleado1 = new Cajero(1,"usuario", "1234", 0);
         assertTrue(empleado1.verificarContraseña("1234"));
         
     }
@@ -45,7 +45,7 @@ public class EmpleadoTest {
 
     @Test
     public void testCrearTurnoYReemplazoSiEsIgual() {
-        Empleado empleado1 = new Cajero("usuario", "1234", 0);
+        Empleado empleado1 = new Cajero(1,"usuario", "1234", 0);
         LocalDate fecha = LocalDate.of(2025, 4, 20);
 
         //dos turnos con igual fecha y turno diurno
@@ -64,7 +64,7 @@ public class EmpleadoTest {
     
     @Test
     public void testDevolverTurnosCorrectamente() {
-        Empleado empleado1 = new Cajero("user1", "pass", 0);
+        Empleado empleado1 = new Cajero(1,"user1", "pass", 0);
         
         LocalDate fecha1 = LocalDate.of(2025, 4, 20);
         LocalDate fecha2 = LocalDate.of(2025, 4, 21);

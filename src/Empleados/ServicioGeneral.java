@@ -3,8 +3,8 @@ package Empleados;
 import AtraccionesYServicio.Atraccion;
 
 public class ServicioGeneral extends Empleado {
-    public ServicioGeneral(String login, String contraseña,int dinero) {
-        super(login, contraseña, dinero);
+    public ServicioGeneral(int ID,String login, String contraseña,int dinero) {
+        super( ID,login, contraseña, dinero);
     }
 
     
