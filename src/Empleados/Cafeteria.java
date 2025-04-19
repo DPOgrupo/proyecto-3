@@ -1,0 +1,79 @@
+package Empleados;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cafeteria extends LugarDeServicio {
+
+    private List<Empleado> cajerosAsociados;
+    private List<Empleado> cocinerosAsociados;
+    private int numeroAlmuerzos;
+
+    public Cafeteria() {
+    	
+        this.cajerosAsociados = new ArrayList<>();
+        this.cocinerosAsociados = new ArrayList<>();
+        this.numeroAlmuerzos = 0;
+    }
+
+    @Override
+    public void setDisponible() {
+        if (cajerosAsociados.size() >= 1 && cocinerosAsociados.size() >= 1) {
+            disponible = true;
+            
+        } 
+        
+        else {
+        	
+            disponible = false;
+        }
+    }
+
+    public void setNumeroComidas(int cantidad) {
+        this.numeroAlmuerzos = cantidad;
+    }
+
+    public void aumentarComidas(int cantidad) {
+        numeroAlmuerzos += cantidad;
+    }
+
+    public void quitarComidas(int cantidad) {
+        if (cantidad > numeroAlmuerzos) {
+            System.out.println("No hay suficientes almuerzos para quitar " + cantidad + ", actualmente hay: " + numeroAlmuerzos);
+        } else {
+            numeroAlmuerzos -= cantidad;
+        }
+    }
+
+    public void añadirCocinero(Empleado empleado) {
+        if (empleado.estaCapacitado("COCINA")) {
+            if (!cocinerosAsociados.contains(empleado)) {
+                cocinerosAsociados.add(empleado);
+                setDisponible();
+            }
+        } else {
+            System.out.println("El empleado no tiene capacitación en cocina.");
+        }
+    }
+
+    public void quitarCocinero(Empleado empleado) {
+        if (cocinerosAsociados.contains(empleado)) {
+            cocinerosAsociados.remove(empleado);
+            setDisponible();
+        }
+    }
+
+
+	public List<Empleado> getCocinerosAsociados() {
+		return cocinerosAsociados;
+	}
+
+	public int getNumeroAlmuerzos() {
+		return numeroAlmuerzos;
+	}
+    
+    
+}
+
+
+
