@@ -1,5 +1,9 @@
 package AtraccionesYServicio;
 
+import java.util.List;
+
+import Empleados.Empleado;
+
 public class Atraccion extends AtraccionOEspectaculo{
 	
 	private String ubicacionFija; 
@@ -7,7 +11,7 @@ public class Atraccion extends AtraccionOEspectaculo{
 	private int minEmpleadosEncargados;
 	private int nivelExclusividad; 
 	private boolean danado; 
-
+	private List<Empleado> Empleados;
 	
 	
 	

@@ -1,5 +1,6 @@
 package AtraccionesYServicio;
 
+import Venta_de_tiquetes.Tiquete;
 public class AtraccionMecanica extends Atraccion {
 
 	private int pesoMin;
@@ -8,6 +9,7 @@ public class AtraccionMecanica extends Atraccion {
 	private int alturaMax;
 	private String contraindicacciones;
 	private int nivelDeRiesgo; 
+	
 	
 	
 	
