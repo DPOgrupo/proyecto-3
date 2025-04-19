@@ -1,9 +1,14 @@
 package AtraccionesYServicio;
 
-public class Atraccion {
+public class Atraccion extends AtraccionOEspectaculo{
 	
+	private String ubicacionFija; 
+	private int cupoMaximo; 
+	private int minEmpleadosEncargados;
+	private int nivelExclusividad; 
+	private boolean danado; 
+
 	
-	boolean disponible;
 	
 	
 	
