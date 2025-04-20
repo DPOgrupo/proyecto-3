@@ -12,14 +12,20 @@ public class AdministradorEmpleados {
 	private String login;
 	private String contraseña;
 	private int contadorDeID;
-    private List<Empleado> empleados;
+	private List<Cajero> cajeros;
+	private List<Cocinero> cocineros;
+	private List<ServicioGeneral> servicios;
 
-    public AdministradorEmpleados(String login, String contraseña) {
-        this.login = login;
-        this.contraseña = contraseña;
-        empleados = new ArrayList<>();
-        contadorDeID = 0;
-    }
+
+	public AdministradorEmpleados(String login, String contraseña) {
+	    this.login = login;
+	    this.contraseña = contraseña;
+	    this.cajeros = new ArrayList<>();
+	    this.cocineros = new ArrayList<>();
+	    this.servicios = new ArrayList<>();
+	    
+	    contadorDeID = 0;
+	}
 
     
     public String getContraseña() {
@@ -37,25 +43,23 @@ public class AdministradorEmpleados {
     }
 
     public void crearCocinero(String login, String contraseña) {
-    	
-    	contadorDeID += 1;
-        Cocinero cocinero = new Cocinero(contadorDeID,login, contraseña, 0);
-        empleados.add(cocinero);
+        contadorDeID++;
+        Cocinero cocinero = new Cocinero(contadorDeID, login, contraseña, 0);
+        cocineros.add(cocinero);
     }
 
     public void crearCajero(String login, String contraseña) {
-    	
-    	contadorDeID += 1;
-        Cajero cajero = new Cajero(contadorDeID,login, contraseña, 0);
-        empleados.add(cajero);
+        contadorDeID++;
+        Cajero cajero = new Cajero(contadorDeID, login, contraseña, 0);
+        cajeros.add(cajero);
     }
 
     public void crearServicioGeneral(String login, String contraseña) {
-    	
-    	contadorDeID += 1;
-        ServicioGeneral servicio = new ServicioGeneral(contadorDeID,login, contraseña, 0);
-        empleados.add(servicio);
+        contadorDeID++;
+        ServicioGeneral servicio = new ServicioGeneral(contadorDeID, login, contraseña, 0);
+        servicios.add(servicio);
     }
+
     
 
     public void añadirCapacitacion(Empleado empleado, String nuevaCapacitacion) {
@@ -109,12 +113,23 @@ public class AdministradorEmpleados {
         }
     }
 
-    public List<Empleado> getEmpleados() {
-        return empleados;
-    }
     
-    
-    public void cambioDeTurno(Empleado empleado, boolean turnoNocturno) {
+    public List<Cajero> getCajeros() {
+		return cajeros;
+	}
+
+
+	public List<Cocinero> getCocineros() {
+		return cocineros;
+	}
+
+
+	public List<ServicioGeneral> getServicios() {
+		return servicios;
+	}
+
+
+	public void cambioDeTurno(Empleado empleado, boolean turnoNocturno) {
         LocalDate hoy = LocalDate.now();
         Turno turnoAnterior = null;
         Turno turnoAhora = null;
@@ -191,11 +206,20 @@ public class AdministradorEmpleados {
     }
 
     public void cambiarTurnoGlobal(boolean turnoNocturno) {
-        for (Empleado empleado : empleados) {
-            cambioDeTurno(empleado, turnoNocturno);
+        for (Cajero cajero : cajeros) {
+        	
+            cambioDeTurno(cajero, turnoNocturno);
+        }
+        for (Cocinero cocinero : cocineros) {
+        	
+            cambioDeTurno(cocinero, turnoNocturno);
+        }
+        for (ServicioGeneral servicio : servicios) {
+        	
+            cambioDeTurno(servicio, turnoNocturno);
         }
     }
-    
+
     	
 
 }
