@@ -19,7 +19,7 @@ public class CambioDeTurnoTest {
 
 	    admin.cambioDeTurno(cajero, false); // aplicar turno diurno
 
-	    assertTrue(tienda.getCajeros().contains(cajero), "Debe añadirse a la tienda en turno diurno.");
+	    assertTrue(tienda.getCajeros().contains(cajero));
 	}
 
 	
@@ -35,7 +35,7 @@ public class CambioDeTurnoTest {
 
 	    admin.cambioDeTurno(cajero, true); // aplicar turno nocturno
 
-	    assertTrue(tienda.getCajeros().contains(cajero), "Debe añadirse a la tienda en turno nocturno.");
+	    assertTrue(tienda.getCajeros().contains(cajero));
 	}
 
 	
@@ -58,8 +58,8 @@ public class CambioDeTurnoTest {
 
 	    admin.cambioDeTurno(cajero, false); // pasa a turno diurno
 
-	    assertFalse(tiendaVieja.getCajeros().contains(cajero), "Debe ser removido del lugar anterior (ayer).");
-	    assertTrue(tiendaNueva.getCajeros().contains(cajero), "Debe ser añadido al lugar actual (hoy).");
+	    assertFalse(tiendaVieja.getCajeros().contains(cajero));
+	    assertTrue(tiendaNueva.getCajeros().contains(cajero));
 	}
 
 	
@@ -75,37 +75,11 @@ public class CambioDeTurnoTest {
 
 	    admin.cambioDeTurno(cocinero, false); // aplicar turno diurno
 
-	    assertTrue(cafeteria.getCocinerosAsociados().contains(cocinero), "El cocinero debe estar en la lista de cocineros de la cafetería.");
-	    assertFalse(cafeteria.getCajeros().contains(cocinero), "El cocinero no debe estar como cajero.");
+	    assertTrue(cafeteria.getCocinerosAsociados().contains(cocinero));
+	    assertFalse(cafeteria.getCajeros().contains(cocinero));
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
     @Test
     public void testCambioDeTurnoConTurnosDeHoy() {
@@ -123,11 +97,9 @@ public class CambioDeTurnoTest {
         LocalDate hoy = LocalDate.now();
         Turno turnoDiurno = new Turno(hoy, false);  // diurno
         Turno turnoNocturno = new Turno(hoy, true); // nocturno
-
-        // Asignar lugares
+        
         turnoDiurno.setLugar(tienda);
         turnoNocturno.setLugar(cafeteria);
-
         // Asignar ambos turnos al empleado
         cajero.añadirTurno(turnoDiurno);
         cajero.añadirTurno(turnoNocturno);
@@ -136,15 +108,15 @@ public class CambioDeTurnoTest {
         admin.cambioDeTurno(cajero, false);  // es turno diurno
 
         // Verificar que está en la tienda (diurno)
-        assertTrue(tienda.getCajeros().contains(cajero), "Debe estar en la tienda después del cambio a turno diurno.");
-        assertFalse(cafeteria.getCajeros().contains(cajero), "No debe estar en la cafetería aún.");
+        assertTrue(tienda.getCajeros().contains(cajero));
+        assertFalse(cafeteria.getCajeros().contains(cajero));
 
-        // Simular cambio de turno a nocturno
+        // Cambio de turno a nocturno
         admin.cambioDeTurno(cajero, true); // es turno nocturno
 
         // Verificar que fue removido de tienda y añadido a cafetería
-        assertFalse(tienda.getCajeros().contains(cajero), "Debe haber salido de la tienda.");
-        assertTrue(cafeteria.getCajeros().contains(cajero), "Debe estar en la cafetería en el turno nocturno.");
+        assertFalse(tienda.getCajeros().contains(cajero));
+        assertTrue(cafeteria.getCajeros().contains(cajero));
     }
 }
 

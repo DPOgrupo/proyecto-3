@@ -27,13 +27,14 @@ public abstract class LugarDeServicio {
         if (!cajerosAsociados.contains(empleado)) {
         	
             cajerosAsociados.add(empleado);
-            setDisponible();
+            
         } 
         
         else {
         	
             System.out.println("El empleado ya está asociado como cajero.");
         }
+        setDisponible();
     }
 
     public void quitarEmpleado(Empleado empleado) {

@@ -10,7 +10,7 @@ public abstract class Empleado {
     protected int ID;
 	protected String login;
     protected String contraseña;
-    protected List<String> capacitaciones;
+    protected List<String> capacitaciones; //COCINA, MANTENIMIENTO_MEDIO, MANTENIMIENTO_ALTO 
     protected List<Turno> turnosAsignados;
     protected int dinero;
 
@@ -57,7 +57,6 @@ public abstract class Empleado {
 
 	    return resultado;
 	}
-	
 	
 	
 
@@ -129,27 +128,5 @@ public abstract class Empleado {
     }
     
     
-    public void añadirTurno(Turno nuevoTurno) {
-    	
-    	Turno elTurno = null;
-        for (Turno cadaTurno : turnosAsignados) {
-        	
-            if (cadaTurno.getFecha().equals(nuevoTurno.getFecha()) && cadaTurno.isTurnoNocturno() == nuevoTurno.isTurnoNocturno()) {
-                
-                
-                elTurno = cadaTurno;
-                
-            }
-        }
-        turnosAsignados.remove(elTurno);
-        turnosAsignados.add(nuevoTurno);
-    }
-
-
-
-    
-
-
-    
-    
+    public abstract void añadirTurno(Turno nuevoTurno);    
 }
