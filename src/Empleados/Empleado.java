@@ -60,7 +60,11 @@ public abstract class Empleado {
 	
 
 
-    public List<String> getCapacitaciones() {
+    public List<Turno> getTurnosAsignados() {
+		return turnosAsignados;
+	}
+
+	public List<String> getCapacitaciones() {
     	
 		return capacitaciones;
 		

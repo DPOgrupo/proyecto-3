@@ -11,7 +11,7 @@ public class Atraccion extends AtraccionOEspectaculo{
 	private int minEmpleadosEncargados;
 	private int nivelExclusividad; 
 	private boolean danado; 
-	private List<Empleado> Empleados;
+	private List<Empleado> empleados;
 	
 	
 	
@@ -28,6 +28,21 @@ public class Atraccion extends AtraccionOEspectaculo{
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
+
+
+
+
+    public void añadirEmpleado(Empleado empleado) {
+        if (!empleados.contains(empleado)) {
+            empleados.add(empleado);
+        }
+    }
+
+    public void quitarEmpleado(Empleado empleado) {
+        if (empleados.contains(empleado)) {
+            empleados.remove(empleado);
+        }
+    }
 
 
 
