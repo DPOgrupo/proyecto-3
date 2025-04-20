@@ -2,7 +2,9 @@ package Venta_de_tiquetes;
 
 import java.time.LocalDate;
 
-public class Taquilla {
+public class Taquilla
+
+{
 
 	private CalculadoraDePrecios calc = new CalculadoraDePrecios(); 
 	
