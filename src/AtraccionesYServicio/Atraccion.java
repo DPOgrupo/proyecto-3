@@ -12,6 +12,7 @@ public class Atraccion extends AtraccionOEspectaculo{
 	private int nivelExclusividad; 
 	private boolean danado; 
 	private List<Empleado> empleados;
+	private String nivelDeRiesgo; //ALTO, MEDIO
 	
 	
 	
@@ -23,26 +24,57 @@ public class Atraccion extends AtraccionOEspectaculo{
 	}
 
 
+    public boolean isDisponible() {
+    	
+        return disponible;
+        
+    }
 
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
-
+    
+    public void setDisponible() {
+        if (empleados.size() >= minEmpleadosEncargados && !danado)
+        {
+            disponible = true;
+            
+        } 
+        
+        else {
+        	
+            disponible = false;
+            
+        }
+    }
 
 
 
     public void añadirEmpleado(Empleado empleado) {
         if (!empleados.contains(empleado)) {
             empleados.add(empleado);
+            
+            setDisponible();
         }
     }
 
     public void quitarEmpleado(Empleado empleado) {
         if (empleados.contains(empleado)) {
             empleados.remove(empleado);
+            
+            setDisponible();
         }
     }
+
+
+	public void setDañado(boolean estado) {
+		this.danado = estado;
+		
+	}
+
+
+	public String getNivelDeRiesgo() {
+		return nivelDeRiesgo;
+	}
+
+
 
 
 

@@ -62,7 +62,7 @@ public class AdministradorEmpleados {
         empleado.añadirCapacitacion(nuevaCapacitacion);
     }
 
-    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, LugarDeServicio lugar) {
+    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, LugarDeServicio lugar) {//fecha cualquiera
         Turno turno = new Turno(fecha, turnoNocturno);
         turno.setLugar(lugar);
         return turno;
