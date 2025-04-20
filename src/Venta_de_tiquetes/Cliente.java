@@ -12,12 +12,23 @@ public class Cliente {
 	private String contrasena; 
 	private List<Tiquete> tiquetesDeCliente;
 	private int dinero; 
+	private boolean restSalud;
+	
 	
 	public Cliente(String nombre, String login, String contrasena, int dimero) {
         this.nombre = nombre; 
 		this.login = login;
         this.tiquetesDeCliente= new ArrayList<Tiquete>();
         this.dinero = dimero; 
+        this.restSalud = false; 
+    }
+	
+	public Cliente(String nombre, String login, String contrasena, int dimero, boolean rest) {
+        this.nombre = nombre; 
+		this.login = login;
+        this.tiquetesDeCliente= new ArrayList<Tiquete>();
+        this.dinero = dimero; 
+        this.restSalud = rest; 
     }
 	
 	public int getDinero() {
