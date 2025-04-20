@@ -19,7 +19,7 @@ public class Cajero extends Empleado {
 
         if (dineroCliente >= total) {
         	
-            cliente.setDinero(cliente.getDinero() - precio);
+            cliente.setDinero(cliente.getDinero() - precio*cantidad);
             
             this.dinero += total;
             
