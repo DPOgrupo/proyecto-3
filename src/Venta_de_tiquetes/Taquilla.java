@@ -2,9 +2,10 @@ package Venta_de_tiquetes;
 
 import java.time.LocalDate;
 
-public class Taquilla
+import Empleados.LugarDeServicio;
 
-{
+public class Taquilla extends LugarDeServicio{
+
 
 	private CalculadoraDePrecios calc = new CalculadoraDePrecios(); 
 	
@@ -99,4 +100,19 @@ public class Taquilla
 	        cobrar(cliente, precio);
 	        cliente.addTiquete(tiquete);
 	    }
+
+    @Override
+    public void setDisponible() {
+        if (cajerosAsociados.size() >= 1)
+        {
+            disponible = true;
+            
+        } 
+        
+        else {
+        	
+            disponible = false;
+            
+        }
+    }
 }

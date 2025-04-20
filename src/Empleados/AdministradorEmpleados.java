@@ -62,14 +62,14 @@ public class AdministradorEmpleados {
         empleado.añadirCapacitacion(nuevaCapacitacion);
     }
 
-    public Turno crearTurnos(boolean turnoNocturno, LugarDeServicio lugar) {
-        Turno turno = new Turno(LocalDate.now(), turnoNocturno);
+    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, LugarDeServicio lugar) {
+        Turno turno = new Turno(fecha, turnoNocturno);
         turno.setLugar(lugar);
         return turno;
     }
-    
-    public Turno crearTurno(boolean turnoNocturno, Atraccion lugar) {
-        Turno turno = new Turno(LocalDate.now(), turnoNocturno);
+
+    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, Atraccion lugar) {
+        Turno turno = new Turno(fecha, turnoNocturno);
         turno.setLugar(lugar);
         return turno;
     }
@@ -112,4 +112,90 @@ public class AdministradorEmpleados {
     public List<Empleado> getEmpleados() {
         return empleados;
     }
+    
+    
+    public void cambioDeTurno(Empleado empleado, boolean turnoNocturno) {
+        LocalDate hoy = LocalDate.now();
+        Turno turnoAnterior = null;
+        Turno turnoAhora = null;
+        List<Turno> turnosHoy = empleado.getTurnoAsignado(hoy);
+
+        if (turnoNocturno) {
+            // Si es nocturno, buscamos el diurno de hoy (anterior)
+            for (Turno t : turnosHoy) {
+                if (!t.isTurnoNocturno()) {
+                    turnoAnterior = t;
+                }
+                if (t.isTurnoNocturno()) {
+                    turnoAhora = t;
+                }
+            }
+        } else {
+            // Si es diurno, buscamos el diurno de hoy (actual)
+            for (Turno t : turnosHoy) {
+                if (!t.isTurnoNocturno()) {
+                    turnoAhora = t;
+                }
+            }
+
+            // Y buscamos el turno nocturno más reciente anterior a hoy (anterior)
+            for (Turno t : empleado.getTurnosAsignados()) {
+                if (t.getFecha().isBefore(hoy) && t.isTurnoNocturno()) {
+                    if (turnoAnterior == null || t.getFecha().isAfter(turnoAnterior.getFecha())) {
+                        turnoAnterior = t;
+                    }
+                }
+            }
+        }
+
+        // 1. Quitar del lugar anterior
+        if (turnoAnterior != null) {
+            Object lugarAnterior = turnoAnterior.getLugar();
+
+            if (turnoAnterior.getQueSoy().equals("LugarDeServicio")) {
+                LugarDeServicio lugar = (LugarDeServicio) lugarAnterior;
+                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) {
+                    ((Cafeteria) lugar).quitarCocinero(empleado);
+                } else {
+                    lugar.quitarEmpleado(empleado);
+                }
+
+            } else if (turnoAnterior.getQueSoy().equals("Atraccion")) {
+                ((Atraccion) lugarAnterior).quitarEmpleado(empleado);
+            }
+
+            empleado.getTurnosAsignados().remove(turnoAnterior);
+        } else {
+            System.out.println("No se encontró un turno anterior para hacer el cambio.");
+        }
+
+        // 2. Añadir al nuevo lugar
+        if (turnoAhora != null) {
+            Object lugarAhora = turnoAhora.getLugar();
+
+            if (turnoAhora.getQueSoy().equals("LugarDeServicio")) {
+                LugarDeServicio lugar = (LugarDeServicio) lugarAhora;
+                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) {
+                    ((Cafeteria) lugar).añadirCocinero(empleado);
+                } else {
+                    lugar.añadirEmpleado(empleado);
+                }
+
+            } else if (turnoAhora.getQueSoy().equals("Atraccion")) {
+                ((Atraccion) lugarAhora).añadirEmpleado(empleado);
+            }
+
+        } else {
+            System.out.println("No se encontró un turno actual para realizar el cambio.");
+        }
+    }
+
+    public void cambiarTurnoGlobal(boolean turnoNocturno) {
+        for (Empleado empleado : empleados) {
+            cambioDeTurno(empleado, turnoNocturno);
+        }
+    }
+    
+    	
+
 }

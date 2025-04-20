@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class LugarDeServicio {
 	
     protected boolean disponible;
-    private List<Empleado> cajerosAsociados;
+    protected List<Empleado> cajerosAsociados;
 
     
     public LugarDeServicio() {

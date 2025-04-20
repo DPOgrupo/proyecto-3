@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import Venta_de_tiquetes.Cliente;
+
 public abstract class Empleado {
     protected int ID;
 	protected String login;
@@ -60,7 +62,11 @@ public abstract class Empleado {
 	
 
 
-    public List<String> getCapacitaciones() {
+    public List<Turno> getTurnosAsignados() {
+		return turnosAsignados;
+	}
+
+	public List<String> getCapacitaciones() {
     	
 		return capacitaciones;
 		
