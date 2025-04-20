@@ -3,9 +3,10 @@ package Empleados;
 import java.util.ArrayList;
 import java.util.List;
 
+import Venta_de_tiquetes.Cliente;
+
 public class Tienda extends LugarDeServicio {
 	
-    private List<Empleado> cajerosAsociados;
     private int numeroJuguetes;
 
     public Tienda() {
@@ -59,5 +60,20 @@ public class Tienda extends LugarDeServicio {
         }
     }
 
-    
+    public void venderTiquetes(int cantidad, Cliente cliente) {
+        if (!isDisponible()) {
+            System.out.println("Venta fallida: No hay suficientes cajeros disponibles.");
+            return;
+        }
+
+        if (cantidad > numeroJuguetes) {
+            System.out.println("No hay suficientes juguetes para quitar " + cantidad + ", actualmente hay: " + numeroJuguetes);
+            return;
+        }
+
+        Empleado vendedor = cajerosAsociados.get(0);
+        vendedor.cobrar(10, cantidad, cliente);// 10 unidades por almuerzo
+        quitarJuguetes(cantidad);
+    }
+
 }

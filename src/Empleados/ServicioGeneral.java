@@ -1,6 +1,7 @@
 package Empleados;
 
 import AtraccionesYServicio.Atraccion;
+import Venta_de_tiquetes.Cliente;
 
 public class ServicioGeneral extends Empleado {
     public ServicioGeneral(int ID,String login, String contraseña,int dinero) {

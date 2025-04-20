@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import Venta_de_tiquetes.Cliente;
+
 public abstract class Empleado {
     protected int ID;
 	protected String login;

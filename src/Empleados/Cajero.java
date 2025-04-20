@@ -1,5 +1,7 @@
 package Empleados;
 
+import Venta_de_tiquetes.Cliente;
+
 public class Cajero extends Empleado {
 	
 	
@@ -17,7 +19,7 @@ public class Cajero extends Empleado {
 
         if (dineroCliente >= total) {
         	
-            cliente.quitarDinero(total);
+            cliente.setDinero(cliente.getDinero() - precio);
             
             this.dinero += total;
             
