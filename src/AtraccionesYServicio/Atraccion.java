@@ -12,7 +12,7 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
     protected String ubicacionFija; 
     protected int cupoMaximo; 
     protected int minEmpleadosEncargados;
-    protected int nivelExclusividad; // Familiar, Oro, Diamante
+    protected int nivelExclusividad; // Basico, Familiar, Oro, Diamante--> 0,1,2,3
     protected boolean danado; 
     protected List<Empleado> empleados;
     protected String nivelDeRiesgo;
@@ -37,7 +37,7 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
         return disponible;
     }
     
-    private boolean estaEnTemporada(LocalDate fecha) {
+    public boolean estaEnTemporada(LocalDate fecha) {
         int mes = fecha.getMonthValue();
 
         if (temporada.equals("TODO_EL_ANO")) {
@@ -127,6 +127,10 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
 
     public void setDañado(boolean estado) {
         this.danado = estado;
+    }
+    
+    public boolean getDañado() {
+        return danado;
     }
 
     public String getUbicacionFija() {

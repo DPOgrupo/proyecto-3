@@ -22,9 +22,13 @@ public class AtraccionMecanica extends Atraccion {
         }
 
         for (Tiquete tiquete : cliente.getTiquetes()) {
+        	
             if (tiquete.esValidoPara(this.idAtraccion)) {
+            	
                 if (tiquete.getCategoria().ordinal() >= this.nivelExclusividad) {
+                	
                     if (!tiquete.estaUsado()) {
+                    	
                     	tiquete.marcarUsado();
                         return true;
                     }

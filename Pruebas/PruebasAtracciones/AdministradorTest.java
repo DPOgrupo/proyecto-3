@@ -7,69 +7,96 @@ import Venta_de_tiquetes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AdministradorTest {
 
-    private AdministradorEmpleados adminEmpleado;
-    private AdministradorAtraccionesYLugares adminAtracciones;
+    private AdministradorEmpleados adminEmp;
+    private AdministradorAtraccionesYLugares adminAtr;
     private AtraccionMecanica montanaRusa;
     private Cajero cajero;
     private Cliente clienteValido;
     private Cliente clienteInvalido;
-
+    private TiqueteRegular tiquete1;
+    
     @BeforeEach
     public void setUp() {
-        adminEmpleado = new AdministradorEmpleados("admin", "1234");
-        adminEmpleado.crearCajero("cajero1", "abc");
+        adminEmp = new AdministradorEmpleados("admin", "1234");
+        adminEmp.crearCajero("cajero1", "abc");
 
-        adminAtracciones = new AdministradorAtraccionesYLugares();
-        adminAtracciones.crearAtraccionMecanica("Montaña Rusa", "VERANO", "Zona A", "ALTO", 3, 1, 1);
-        montanaRusa = adminAtracciones.getMecanicas().get(0);
+        adminAtr = new AdministradorAtraccionesYLugares();
+        adminAtr.crearAtraccionMecanica("Montaña Rusa", "PRIMAVERA", "Zona A", "ALTO", 3, 1, 1);
+        montanaRusa = adminAtr.getMecanicas().get(0);
 
-        cajero = adminEmpleado.getCajeros().get(0);
+        cajero = adminEmp.getCajeros().get(0);
         montanaRusa.añadirEmpleado(cajero);
         montanaRusa.setDisponible();
 
         clienteValido = new Cliente("Carlos", "carlosLogin", "pass123", 500, 15);
         clienteInvalido = new Cliente("Lucía", "luciaLogin", "pass456", 300, 10);
+        tiquete1 = new TiqueteRegular(CategoriaExclusividad.ORO);
+        clienteValido.addTiquete(tiquete1);
     }
 
     @Test
     public void testCajeroEnLista() {
-        List<Cajero> cajeros = adminEmpleado.getCajeros();
-        assertTrue(cajeros.contains(cajero), "El cajero debería estar en la lista de empleados");
+        List<Cajero> cajeros = adminEmp.getCajeros();
+        assertTrue(cajeros.contains(cajero));
     }
 
     @Test
     public void testAtraccionDisponibleConMinimoEmpleados() {
-        assertTrue(montanaRusa.isDisponible(), "La atracción debería estar disponible con el mínimo de empleados");
+    	
+    	assertTrue(montanaRusa.estaEnTemporada(LocalDate.now()));
+    	assertTrue(!montanaRusa.getDañado());
+        assertTrue(montanaRusa.isDisponible());
     }
 
     @Test
     public void testClienteValidoPuedeEntrar() {
-        assertTrue(montanaRusa.añadirCliente(clienteValido), "Cliente válido debería poder entrar a la atracción");
+        assertTrue(montanaRusa.añadirCliente(clienteValido));
     }
 
     @Test
     public void testClienteInvalidoNoPuedeEntrar() {
-        assertFalse(montanaRusa.añadirCliente(clienteInvalido), "Cliente inválido no debería poder entrar (edad mínima)");
+        assertFalse(montanaRusa.añadirCliente(clienteInvalido));
     }
 
     @Test
     public void testQuitarCliente() {
         montanaRusa.añadirCliente(clienteValido);
-        assertTrue(montanaRusa.quitarCliente(clienteValido), "Debería poder quitar cliente existente");
-        assertFalse(montanaRusa.getClientes().contains(clienteValido), "Cliente ya no debería estar en la atracción");
-
+        assertTrue(montanaRusa.quitarCliente(clienteValido));
+        assertFalse(montanaRusa.getClientes().contains(clienteValido));
     }
 
     @Test
     public void testVaciarAtraccion() {
         montanaRusa.añadirCliente(clienteValido);
         montanaRusa.vaciarClientes();
-        assertEquals(0, montanaRusa.getClientes().size(), "La atracción debería estar vacía");
+        assertEquals(0, montanaRusa.getClientes().size());
     }
+    
+    
+    @Test
+    public void testRepararAtraccionAlta() {
+        // Creamos una atracción dañada con nivel de riesgo ALTO
+        adminAtr.crearAtraccionMecanica("Torre del Terror", "VERANO", "Zona B", "MEDIO", 2, 1, 2);
+        AtraccionMecanica torre = adminAtr.getMecanicas().get(1);
+        torre.setDañado(true);
+        assertTrue(torre.getDañado());
+
+        // Creamos empleado de servicio general con capacitación adecuada
+        ServicioGeneral tecnico = new ServicioGeneral(10, "servicio1", "clave", 0);
+        tecnico.añadirCapacitacion("MANTENIMIENTO_ALTO");
+
+        // Reparación
+        tecnico.reparar(torre);
+
+        // Validación
+        assertFalse(torre.getDañado(), "La atracción debería estar reparada");
+    }
+
 }
