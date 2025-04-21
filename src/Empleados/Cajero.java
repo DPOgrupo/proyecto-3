@@ -33,6 +33,9 @@ public class Cajero extends Empleado {
             
         }
     }
+	public int getId() {
+		return this.ID;
+	}
 
 
 	

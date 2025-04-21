@@ -151,6 +151,10 @@ public abstract class Empleado {
 	    turnosAsignados.remove(elTurno);
 	    turnosAsignados.add(nuevoTurno);
 	}
+
+	public int getID() {
+		return ID;
+	}
     
     
     
