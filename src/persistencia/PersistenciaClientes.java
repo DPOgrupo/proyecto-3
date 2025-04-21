@@ -46,7 +46,7 @@ public class PersistenciaClientes {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                if (partes.length == 5) {
+                if (partes.length == 6) {
                     String login = partes[0];
                     String nombre = partes[1];
                     String contrasena = partes[2];
