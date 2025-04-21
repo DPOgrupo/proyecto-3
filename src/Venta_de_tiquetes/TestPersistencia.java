@@ -33,7 +33,7 @@ public class TestPersistencia {
         // Cargar clientes en una nueva instancia del admin
         AdministradorTiquetes adminCargado = new AdministradorTiquetes();
         PersistenciaClientes persistenciaCargada = new PersistenciaClientes(adminCargado);
-        persistenciaCargada.cargarClientes();
+        //persistenciaCargada.cargarClientes();
 
         // Mostrar los clientes cargados
         System.out.println("\n--- CLIENTES CARGADOS DESDE CSV ---");
