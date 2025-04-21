@@ -35,8 +35,8 @@ public class AdministradorTest {
         montanaRusa.añadirEmpleado(cajero);
         montanaRusa.setDisponible();
 
-        clienteValido = new Cliente("Carlos", "carlosLogin", "pass123", 500, 15);
-        clienteInvalido = new Cliente("Lucía", "luciaLogin", "pass456", 300, 10);
+        clienteValido = new Cliente("cliente", "cliente", "clave", 500, 15);
+        clienteInvalido = new Cliente("cliente", "cliente", "clave", 300, 10);
         tiquete1 = new TiqueteRegular(CategoriaExclusividad.ORO);
         clienteValido.addTiquete(tiquete1);
     }
@@ -81,21 +81,34 @@ public class AdministradorTest {
     
     
     @Test
-    public void testRepararAtraccionAlta() {
-        // Creamos una atracción dañada con nivel de riesgo ALTO
-        adminAtr.crearAtraccionMecanica("Torre del Terror", "VERANO", "Zona B", "MEDIO", 2, 1, 2);
+    public void testRepararAtraccionMediaAlta() {
+
+    	adminAtr.crearAtraccionMecanica("Torre del Terror", "VERANO", "Zona B", "MEDIO", 2, 1, 2);
         AtraccionMecanica torre = adminAtr.getMecanicas().get(1);
         torre.setDañado(true);
         assertTrue(torre.getDañado());
-
-        // Creamos empleado de servicio general con capacitación adecuada
         ServicioGeneral tecnico = new ServicioGeneral(10, "servicio1", "clave", 0);
-        tecnico.añadirCapacitacion("MANTENIMIENTO_ALTO");
+        tecnico.añadirCapacitacion("MANTENIMIENTO_ALTA");
 
-        // Reparación
         tecnico.reparar(torre);
 
-        // Validación
+
+        assertTrue(torre.getDañado(), "La atracción debería estar reparada");
+    }
+    
+    @Test
+    public void testRepararAtraccionAlta() {
+
+    	adminAtr.crearAtraccionMecanica("Torre del Terror", "VERANO", "Zona B", "MEDIO", 2, 1, 2);
+        AtraccionMecanica torre = adminAtr.getMecanicas().get(1);
+        torre.setDañado(true);
+        assertTrue(torre.getDañado());
+        ServicioGeneral tecnico = new ServicioGeneral(10, "servicio1", "clave", 0);
+        tecnico.añadirCapacitacion("MANTENIMIENTO_MEDIO");
+
+        tecnico.reparar(torre);
+
+
         assertFalse(torre.getDañado(), "La atracción debería estar reparada");
     }
 
