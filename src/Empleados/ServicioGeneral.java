@@ -11,8 +11,9 @@ public class ServicioGeneral extends Empleado {
     public void reparar(Atraccion atraccion) {
     	
     	String tipo = atraccion.getNivelDeRiesgo(); 
-
-        if (capacitaciones.contains("MANTENIMIENTO_" +tipo)) {
+        if (!capacitaciones.contains("MANTENIMIENTO_" +tipo)) {
+        	
+        	
             System.out.println("El empleado no está capacitado para la atracción ");
             return;
             }
