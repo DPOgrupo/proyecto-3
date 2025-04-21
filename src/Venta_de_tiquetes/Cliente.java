@@ -50,5 +50,17 @@ public class Cliente {
 	public List<Tiquete> getTiquetes(){
 		return this.tiquetesDeCliente;
 	}
+	
+	public String getLogin() {
+		return this.login;
+	}
+	
+	public String getContrasena() {
+		return this.contrasena;
+	}
+	public boolean isRestSalud() {
+		return this.restSalud;
+	}
 }
+
 
