@@ -7,7 +7,7 @@ public class Prueba2 {
     public static void main(String[] args) {
         try {
             // Crear un cliente con suficiente dinero
-            Cliente cliente1 = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500);
+            Cliente cliente1 = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500, 18);
             Taquilla taquilla = new Taquilla();
 
             // Vender tiquete regular (empleado = false)

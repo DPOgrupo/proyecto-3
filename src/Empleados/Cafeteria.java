@@ -41,25 +41,32 @@ public class Cafeteria extends LugarDeServicio {
     public void quitarComidas(int cantidad) {
         if (cantidad > numeroAlmuerzos) {
             System.out.println("No hay suficientes almuerzos para quitar " + cantidad + ", actualmente hay: " + numeroAlmuerzos);
-        } else {
+        } 
+        else 
+        {
             numeroAlmuerzos -= cantidad;
         }
     }
 
     public void añadirCocinero(Empleado empleado) {
         if (empleado.estaCapacitado("COCINA")) {
+        	
             if (!cocinerosAsociados.contains(empleado)) {
                 cocinerosAsociados.add(empleado);
                 setDisponible();
             }
-        } else {
+        }
+        else
+        {
             System.out.println("El empleado no tiene capacitación en cocina.");
         }
         setDisponible();
     }
 
     public void quitarCocinero(Empleado empleado) {
+    	
         if (cocinerosAsociados.contains(empleado)) {
+        	
             cocinerosAsociados.remove(empleado);
             setDisponible();
         }

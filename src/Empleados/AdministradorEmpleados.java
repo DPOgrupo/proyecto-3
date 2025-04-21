@@ -86,7 +86,9 @@ public class AdministradorEmpleados {
 
     public void cambiarCocineroACajero(Empleado empleado, Cafeteria cafeteria) {
         if (empleado instanceof Cocinero) {
+        	
             if (cafeteria.getCocinerosAsociados().contains(empleado)) {
+            	
                 cafeteria.quitarCocinero(empleado); // Lo saca como cocinero
                 cafeteria.añadirEmpleado(empleado); // Lo agrega como cajero usando método heredado
                 
@@ -168,19 +170,27 @@ public class AdministradorEmpleados {
             Object lugarAnterior = turnoAnterior.getLugar();
 
             if (turnoAnterior.getQueSoy().equals("LugarDeServicio")) {
+            	
                 LugarDeServicio lugar = (LugarDeServicio) lugarAnterior;
                 if (lugar instanceof Cafeteria && empleado instanceof Cocinero) {
+                	
                     ((Cafeteria) lugar).quitarCocinero(empleado);
-                } else {
+                } 
+                else 
+                {
                     lugar.quitarEmpleado(empleado);
                 }
 
-            } else if (turnoAnterior.getQueSoy().equals("Atraccion")) {
+            } 
+            else if (turnoAnterior.getQueSoy().equals("Atraccion")) 
+            {
                 ((Atraccion) lugarAnterior).quitarEmpleado(empleado);
             }
 
             empleado.getTurnosAsignados().remove(turnoAnterior);
-        } else {
+        } 
+        else 
+        {
             System.out.println("No se encontró un turno anterior para hacer el cambio.");
         }
 
@@ -188,19 +198,28 @@ public class AdministradorEmpleados {
         if (turnoAhora != null) {
             Object lugarAhora = turnoAhora.getLugar();
 
-            if (turnoAhora.getQueSoy().equals("LugarDeServicio")) {
+            if (turnoAhora.getQueSoy().equals("LugarDeServicio")) 
+            {
                 LugarDeServicio lugar = (LugarDeServicio) lugarAhora;
-                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) {
+                
+                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) 
+                {
                     ((Cafeteria) lugar).añadirCocinero(empleado);
-                } else {
+                }
+                else 
+                {
                     lugar.añadirEmpleado(empleado);
                 }
 
-            } else if (turnoAhora.getQueSoy().equals("Atraccion")) {
+            } 
+            else if (turnoAhora.getQueSoy().equals("Atraccion")) 
+            {
                 ((Atraccion) lugarAhora).añadirEmpleado(empleado);
             }
 
-        } else {
+        } 
+        else 
+        {
             System.out.println("No se encontró un turno actual para realizar el cambio.");
         }
     }

@@ -14,7 +14,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaEnTiendaConCajero() {
-        Cliente cliente = new Cliente("cliente", "usuario", "1234", 1000);
+        Cliente cliente = new Cliente("cliente", "usuario", "1234", 1000,18);
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
 
         Tienda tienda = new Tienda();
@@ -29,7 +29,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaEnCafeteriaConCocineroYCajero() {
-        Cliente cliente = new Cliente("cliente", "usuario", "1234", 500);
+        Cliente cliente = new Cliente("cliente", "usuario", "1234", 500,18);
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         Cocinero cocinero = new Cocinero(3, "cook", "clave", 0);
 
@@ -46,7 +46,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaEnTaquillaConCliente() throws FondosInsuficientesException {
-        Cliente cliente = new Cliente("cliente", "usuario", "1234", 100000);
+        Cliente cliente = new Cliente("cliente", "usuario", "1234", 100000, 18);
         Taquilla taquilla = new Taquilla();
         Cajero cajero = new Cajero(1, "taquillero", "clave", 0);
         taquilla.añadirEmpleado(cajero);
@@ -61,7 +61,7 @@ public class VentaCajeroTest {
     
     @Test
     public void testVentaFallidaPorFaltaDeCajeroEnTienda() {
-        Cliente cliente = new Cliente("cliente", "1234", "clave", 500);
+        Cliente cliente = new Cliente("cliente", "1234", "clave", 500, 18);
         Tienda tienda = new Tienda();
         tienda.setNumeroJuguetes(5); // Tiene juguetes pero nadie para vender
 
@@ -73,7 +73,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaFallidaPorFaltaDeCocineroEnCafeteria() {
-        Cliente cliente = new Cliente("cliente", "1234", "clave", 500);
+        Cliente cliente = new Cliente("cliente", "1234", "clave", 500, 18);
         Cafeteria cafeteria = new Cafeteria();
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         cafeteria.setNumeroComidas(5);
@@ -87,7 +87,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaFallidaPorFaltaDeJuguetes() {
-        Cliente cliente = new Cliente("cliente", "1234", "clave", 300);
+        Cliente cliente = new Cliente("cliente", "1234", "clave", 300, 18);
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         Tienda tienda = new Tienda();
         tienda.setNumeroJuguetes(1); 
@@ -101,7 +101,7 @@ public class VentaCajeroTest {
 
     @Test
     public void testVentaFallidaPorFaltaDeComidas() {
-        Cliente cliente = new Cliente("cliente", "1234", "clave", 200);
+        Cliente cliente = new Cliente("cliente", "1234", "clave", 200, 18);
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         Cocinero cocinero = new Cocinero(2, "cocinero", "clave", 0);
 

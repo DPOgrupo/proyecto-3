@@ -11,24 +11,28 @@ public class Cliente {
 	private String nombre;
 	private String contrasena; 
 	private List<Tiquete> tiquetesDeCliente;
-	private int dinero; 
+	private int dinero;
+	private int edad;
 	private boolean restSalud;
+
 	
 	
-	public Cliente(String nombre, String login, String contrasena, int dimero) {
+	public Cliente(String nombre, String login, String contrasena, int dinero, int edad) {
         this.nombre = nombre; 
 		this.login = login;
         this.tiquetesDeCliente= new ArrayList<Tiquete>();
-        this.dinero = dimero; 
+        this.dinero = dinero; 
         this.restSalud = false; 
+        this.edad = edad;
     }
 	
-	public Cliente(String nombre, String login, String contrasena, int dimero, boolean rest) {
+	public Cliente(String nombre, String login, String contrasena, int dinero, int edad, boolean rest) {
         this.nombre = nombre; 
 		this.login = login;
         this.tiquetesDeCliente= new ArrayList<Tiquete>();
-        this.dinero = dimero; 
+        this.dinero = dinero; 
         this.restSalud = rest; 
+        this.edad = edad;
     }
 	
 	public int getDinero() {
@@ -50,5 +54,24 @@ public class Cliente {
 	public List<Tiquete> getTiquetes(){
 		return this.tiquetesDeCliente;
 	}
+
+	public boolean isRestSalud() {
+		return restSalud;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+	
+	
+	
 }
 
