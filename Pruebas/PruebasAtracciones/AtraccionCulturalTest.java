@@ -19,17 +19,7 @@ class AtraccionCulturalTest {
 
     @BeforeEach
     void setUp() {
-        atraccion = new AtraccionCultural(
-                "Sala de Historia",
-                "Zona C",
-                "Invierno",
-                30,
-                2,
-                CategoriaExclusividad.BASICO.ordinal(),
-                edadMinima,
-                "Nieve",
-                "BAJO"
-        );
+        atraccion = new AtraccionCultural("Sala de Historia","Zona C","Invierno",30,2,CategoriaExclusividad.BASICO.ordinal(),edadMinima,"Nieve","BAJO");
     }
 
     @Test
