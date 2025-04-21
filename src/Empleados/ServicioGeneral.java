@@ -8,9 +8,19 @@ public class ServicioGeneral extends Empleado {
         super( ID,login, contraseña, dinero);
     }
 
-    
     public void reparar(Atraccion atraccion) {
-    	atraccion.setDañado(false);
+    	
+    	String tipo = atraccion.getNivelDeRiesgo(); 
+
+        if (capacitaciones.contains("MANTENIMIENTO_" +tipo)) {
+            System.out.println("El empleado no está capacitado para la atracción ");
+            return;
+            }
+        else 
+        {
+        	atraccion.setDañado(false);
+        }
+    	
     }
 	@Override
 	public void cobrar(int precio, int cantidad, Cliente cliente) {		

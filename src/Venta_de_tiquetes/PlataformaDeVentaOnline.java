@@ -77,7 +77,7 @@ public class PlataformaDeVentaOnline {
         System.out.println("Gracias por visitar la plataforma.");
     }
 
-    private int leerEntero(String mensaje) {
+    public int leerEntero(String mensaje) {
         while (true) {
             System.out.print(mensaje);
             if (scanner.hasNextInt()) {
@@ -91,7 +91,7 @@ public class PlataformaDeVentaOnline {
         }
     }
 
-    private CategoriaExclusividad seleccionarCategoria() {
+    public CategoriaExclusividad seleccionarCategoria() {
         System.out.println("Selecciona la categoría:");
         System.out.println("1. BASICO");
         System.out.println("2. FAMILIAR");
@@ -111,7 +111,7 @@ public class PlataformaDeVentaOnline {
         };
     }
 
-    private UnidadTiempo seleccionarUnidadTiempo() {
+    public UnidadTiempo seleccionarUnidadTiempo() {
         System.out.println("Selecciona la unidad de tiempo:");
         System.out.println("1. DIA");
         System.out.println("2. SEMANA");
