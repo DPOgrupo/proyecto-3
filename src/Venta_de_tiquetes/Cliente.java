@@ -20,6 +20,7 @@ public class Cliente {
 	public Cliente(String nombre, String login, String contrasena, int dinero, int edad) {
         this.nombre = nombre; 
 		this.login = login;
+		this.contrasena = contrasena; 
         this.tiquetesDeCliente= new ArrayList<Tiquete>();
         this.dinero = dinero; 
         this.restSalud = false; 
@@ -29,6 +30,7 @@ public class Cliente {
 	public Cliente(String nombre, String login, String contrasena, int dinero, int edad, boolean rest) {
         this.nombre = nombre; 
 		this.login = login;
+		this.contrasena = contrasena; 
         this.tiquetesDeCliente= new ArrayList<Tiquete>();
         this.dinero = dinero; 
         this.restSalud = rest; 
