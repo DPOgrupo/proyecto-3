@@ -14,5 +14,21 @@ public class TiqueteTemporada extends Tiquete {
 		this.fechaFin = fFin; 
 		
 	}
+	
+	@Override
+	public boolean esValidoPara(String idAtraccion) {
+		
+	    return !LocalDate.now().isBefore(fechaInicio) && !LocalDate.now().isAfter(fechaFin);
+	}
+
+	@Override
+	public void marcarUsado() {
+		
+	}
+
+	@Override
+	public boolean estaUsado() {
+		return false;
+	}
 
 }

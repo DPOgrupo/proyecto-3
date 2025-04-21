@@ -9,7 +9,7 @@ public class TaquillaTest {
 
     @Test
     public void testCompraDeTiquetesConDineroSuficiente() {
-        Cliente cliente = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500);
+        Cliente cliente = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500, 18);
         Taquilla taquilla = new Taquilla();
 
         try {
@@ -28,7 +28,7 @@ public class TaquillaTest {
 
     @Test
     public void testCompraConFondosInsuficientes() {
-        Cliente cliente = new Cliente("Ana", "123", "clave", 100); // Muy poco dinero
+        Cliente cliente = new Cliente("Ana", "123", "clave", 100, 18); // Muy poco dinero
         Taquilla taquilla = new Taquilla();
 
         assertThrows(FondosInsuficientesException.class, () -> {

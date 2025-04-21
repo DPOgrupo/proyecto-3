@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import AtraccionesYServicio.Atraccion;
 import Venta_de_tiquetes.Cliente;
 
 public abstract class Empleado {
@@ -128,5 +129,26 @@ public abstract class Empleado {
     }
     
     
-    public abstract void añadirTurno(Turno nuevoTurno);    
+    public void añadirTurno(Turno nuevoTurno) {
+	    if ("Atraccion".equals(nuevoTurno.getQueSoy())) {
+	        Atraccion atraccion = (Atraccion) nuevoTurno.getLugar();
+	        String tipo = atraccion.getNivelDeRiesgo(); 
+
+	        if (capacitaciones.contains("MANTENIMIENTO_" +tipo)) {
+	            System.out.println("El empleado no está capacitado para la atracción ");
+	            return;
+	        }
+	    }
+
+	    Turno elTurno = null;
+	    for (Turno cadaTurno : turnosAsignados) {
+	        if (cadaTurno.getFecha().equals(nuevoTurno.getFecha()) && cadaTurno.isTurnoNocturno() == nuevoTurno.isTurnoNocturno())
+	        {
+	            elTurno = cadaTurno;
+	        }
+	    }
+
+	    turnosAsignados.remove(elTurno);
+	    turnosAsignados.add(nuevoTurno);
+	}
 }

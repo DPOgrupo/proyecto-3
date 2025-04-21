@@ -2,8 +2,8 @@ package AtraccionesYServicio;
 
 public abstract class AtraccionOEspectaculo {
 
-	private String idAtraccion; 
-	private String temporada; 
+	protected String idAtraccion; 
+	protected String temporada;  //TODO_EL_ANO   INVIERNO   PRIMAVERA     VERANO     OTONO
 	protected boolean disponible; 
 	
 	

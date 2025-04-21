@@ -10,5 +10,20 @@ public class TiqueteRegular extends Tiquete {
 		this.usado = false; 
 	}
 	
+	
+	@Override
+	public boolean esValidoPara(String idAtraccion) {
+	    return !usado; // Mientras no este usado
+	}
+
+	@Override
+	public void marcarUsado() {
+	    this.usado = true;
+	}
+
+	@Override
+	public boolean estaUsado() {
+	    return usado;
+	}
 }
 
