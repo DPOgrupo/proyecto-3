@@ -55,23 +55,25 @@ public class Cliente {
 		return this.tiquetesDeCliente;
 	}
 
-	public boolean isRestSalud() {
-		return restSalud;
+	
+	public String getContrasena() {
+		return this.contrasena;
 	}
+	public boolean isRestSalud() {
+		return this.restSalud;
+	}
+
+
 
 	public String getLogin() {
 		return login;
 	}
 
-	public String getContrasena() {
-		return contrasena;
-	}
+
 
 	public int getEdad() {
 		return edad;
 	}
-	
-	
 	
 }
 
