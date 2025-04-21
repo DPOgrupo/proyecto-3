@@ -14,7 +14,7 @@ public class Cafeteria extends LugarDeServicio {
     	
         this.cajerosAsociados = new ArrayList<>();
         this.cocinerosAsociados = new ArrayList<>();
-        this.numeroAlmuerzos = 0;
+        this.numeroAlmuerzos = 90;
     }
 
     @Override

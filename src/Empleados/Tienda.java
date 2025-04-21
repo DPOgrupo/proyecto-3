@@ -12,7 +12,7 @@ public class Tienda extends LugarDeServicio {
     public Tienda() {
     	
         this.cajerosAsociados = new ArrayList<>();
-        this.numeroJuguetes = 99;
+        this.numeroJuguetes = 90;
     }
 
     @Override
