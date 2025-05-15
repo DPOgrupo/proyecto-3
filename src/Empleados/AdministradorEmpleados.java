@@ -15,6 +15,7 @@ public class AdministradorEmpleados {
 	private List<Cajero> cajeros;
 	private List<Cocinero> cocineros;
 	private List<ServicioGeneral> servicios;
+	private boolean turnoGlobalNocturno;
 
 
 	public AdministradorEmpleados(String login, String contraseña) {
@@ -23,6 +24,7 @@ public class AdministradorEmpleados {
 	    this.cajeros = new ArrayList<>();
 	    this.cocineros = new ArrayList<>();
 	    this.servicios = new ArrayList<>();
+	    this.turnoGlobalNocturno = false;
 	    
 	    contadorDeID = 0;
 	}
@@ -35,8 +37,20 @@ public class AdministradorEmpleados {
     public String getLogin() {
         return login;
     }
+    
+    
 
-    public boolean verificarContraseña(String clave) {
+    public boolean isTurnoGlobalNocturno() {
+		return turnoGlobalNocturno;
+	}
+
+
+	public void setTurnoGlobalNocturno(boolean turnoGlobalNocturno) {
+		this.turnoGlobalNocturno = turnoGlobalNocturno;
+	}
+
+
+	public boolean verificarContraseña(String clave) {
     	
         return contraseña.equals(clave);
         
@@ -225,6 +239,9 @@ public class AdministradorEmpleados {
     }
 
     public void cambiarTurnoGlobal(boolean turnoNocturno) {
+    	
+    	setTurnoGlobalNocturno(turnoNocturno);
+    	
         for (Cajero cajero : cajeros) {
         	
             cambioDeTurno(cajero, turnoNocturno);
