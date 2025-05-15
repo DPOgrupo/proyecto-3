@@ -1,6 +1,7 @@
 package AtraccionesYServicio;
 
 import Empleados.*;
+import Venta_de_tiquetes.Taquilla;
 import AtraccionesYServicio.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class AdministradorAtraccionesYLugares {
     private List<AtraccionMecanica> mecanicas;
     private List<AtraccionCultural> culturales;
     private List<Espectaculo> espectaculos;
+    private List<Taquilla> taquillas;
 
     public AdministradorAtraccionesYLugares() {
         tiendas = new ArrayList<>();
@@ -19,6 +21,7 @@ public class AdministradorAtraccionesYLugares {
         mecanicas = new ArrayList<>();
         culturales = new ArrayList<>();
         espectaculos = new ArrayList<>();
+        taquillas = new ArrayList<>();
     }
 
     public void crearTienda(int numJuguetes) {
@@ -42,6 +45,12 @@ public class AdministradorAtraccionesYLugares {
     public void añadirComidas(Cafeteria cafeteria, int cantidad) {
     	cafeteria.aumentarComidas(cantidad);
     }
+    
+    public void crearTaquilla() {
+    	
+        Taquilla nueva = new Taquilla();
+        taquillas.add(nueva);
+    }
 
     public List<Tienda> getTiendas() {
         return tiendas;
@@ -61,11 +70,13 @@ public class AdministradorAtraccionesYLugares {
 
     public List<Espectaculo> getEspectaculos() {
         return espectaculos;
-    }
+    }    
     
-    
-    
-    public void crearAtraccionMecanica(String nombre, String temporada, String ubicacionFija, String nivelDeRiesgo, int cupoMaximo, int minEmpleados, int nivelExclusividad) {
+    public List<Taquilla> getTaquillas() {
+		return taquillas;
+	}
+
+	public void crearAtraccionMecanica(String nombre, String temporada, String ubicacionFija, String nivelDeRiesgo, int cupoMaximo, int minEmpleados, int nivelExclusividad) {
 
 
 	AtraccionMecanica mecanica = new AtraccionMecanica(nombre, temporada, ubicacionFija, nivelDeRiesgo, cupoMaximo, minEmpleados, nivelExclusividad);

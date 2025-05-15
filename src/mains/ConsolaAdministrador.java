@@ -307,14 +307,14 @@ public class ConsolaAdministrador {
         int index = 0;
 
         System.out.println("Seleccione una atracción:");
-        for (Atraccion a : adminAtr.getMecanicas()) {
-            System.out.println(index + ". Mecánica: " + a.getIdAtraccion());
-            atracciones.add(a);
+        for (Atraccion cadaAtraccion : adminAtr.getMecanicas()) {
+            System.out.println(index + ". Mecánica: " + cadaAtraccion.getIdAtraccion());
+            atracciones.add(cadaAtraccion);
             index++;
         }
-        for (Atraccion a : adminAtr.getCulturales()) {
-            System.out.println(index + ". Cultural: " + a.getIdAtraccion());
-            atracciones.add(a);
+        for (Atraccion cadaCultural : adminAtr.getCulturales()) {
+            System.out.println(index + ". Cultural: " + cadaCultural.getIdAtraccion());
+            atracciones.add(cadaCultural);
             index++;
         }
 
