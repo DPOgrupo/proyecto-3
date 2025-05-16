@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/gson-2.10.1.jar</name>
+			<type>1</type>
+			<location>C:/Users/Santiago Rojas/Downloads/gson-2.10.1.jar</location>
+		</link>
+	</linkedResources>
 </projectDescription>
