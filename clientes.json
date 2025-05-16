@@ -1,0 +1,11 @@
+[
+  {
+    "login": "Yago",
+    "nombre": "Santiago Rojas",
+    "contrasena": "Lucas1226",
+    "tiquetesDeCliente": [],
+    "dinero": 300000,
+    "edad": 18,
+    "restSalud": false
+  }
+]

@@ -130,8 +130,23 @@ public class AdministradorEmpleados {
     }
 
     
-    public List<Cajero> getCajeros() {
+    public void setCajeros(List<Cajero> cajeros) {
+		this.cajeros = cajeros;
+	}
+
+
+	public void setCocineros(List<Cocinero> cocineros) {
+		this.cocineros = cocineros;
+	}
+
+
+	public List<Cajero> getCajeros() {
 		return cajeros;
+	}
+
+
+	public void setServicios(List<ServicioGeneral> servicios) {
+		this.servicios = servicios;
 	}
 
 

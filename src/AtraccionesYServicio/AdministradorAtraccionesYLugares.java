@@ -92,5 +92,39 @@ public class AdministradorAtraccionesYLugares {
 	culturales.add(cultural);
 	}
 
+	public void setTaquillas(List<Taquilla> taquillas2) {
+		// TODO Auto-generated method stub
+		this.taquillas = taquillas2; 
+		
+	}
+
+	public void setTiendas(List<Tienda> tiendas2) {
+		// TODO Auto-generated method stub
+		this.tiendas = tiendas2; 
+		
+	}
+
+	public void setCafeterias(List<Cafeteria> cafeterias2) {
+		// TODO Auto-generated method stub
+		this.cafeterias = cafeterias2;
+	}
+
+	public void setMecanicas(List<AtraccionMecanica> mecanicas2) {
+		// TODO Auto-generated method stub
+		this.mecanicas = mecanicas2; 
+	}
+
+	public void setCulturales(List<AtraccionCultural> culturales2) {
+		// TODO Auto-generated method stub
+		this.culturales = culturales2; 
+	}
+
+	public void setEspectaculos(List<Espectaculo> espectaculos2) {
+		// TODO Auto-generated method stub
+		this.espectaculos = espectaculos2; 
+	}
+
+	
+
 
 }

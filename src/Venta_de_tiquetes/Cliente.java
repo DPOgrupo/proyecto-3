@@ -16,7 +16,9 @@ public class Cliente {
 	private boolean restSalud;
 
 	
-	
+	public Cliente() {
+		
+	}
 	public Cliente(String nombre, String login, String contrasena, int dinero, int edad) {
         this.nombre = nombre; 
 		this.login = login;

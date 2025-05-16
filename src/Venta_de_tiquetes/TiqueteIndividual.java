@@ -5,6 +5,7 @@ public class TiqueteIndividual extends Tiquete {
 	private String atraccionAsosiada;
 	private boolean usado;
 	
+	
 	public TiqueteIndividual(String atraccionAsosiada) {
 		super(CategoriaExclusividad.BASICO);
 		this.atraccionAsosiada = atraccionAsosiada; 

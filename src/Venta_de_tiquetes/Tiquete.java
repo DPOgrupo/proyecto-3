@@ -6,6 +6,9 @@ public abstract class Tiquete {
 
 	private CategoriaExclusividad categoria; 
 	
+	public Tiquete() {
+		
+	}
 	public Tiquete(CategoriaExclusividad categoria) {
 		this.categoria = categoria; 
 		
