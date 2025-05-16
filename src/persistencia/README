@@ -1,0 +1,9 @@
+Para la implementacion de la persistencia de este proyecto hemos optado por utlilizar la libreria gson, que es una libreria creada por google 
+
+Gson (también conocido como Google Gson) es una biblioteca de código abierto que permite la serialización y
+deserialización entre objetos Java y su representación en notación JSON.
+
+Gson tiene una licencia Apache 2.0. 
+
+el codigo por tanto no nos pertenece y no estamos tratando de hacer que parezca de este modo. 
+
