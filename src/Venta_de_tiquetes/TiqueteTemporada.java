@@ -36,5 +36,10 @@ public class TiqueteTemporada extends Tiquete {
 	public boolean estaUsado() {
 		return false;
 	}
+	@Override
+	public String generarContenidoQR() {
+	    return "ID:" + getId() + "|Tipo:FastPass|Fecha:" + fechaFin.toString();
+	}
+	
 
 }

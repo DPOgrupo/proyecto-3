@@ -33,5 +33,10 @@ public class TiqueteRegular extends Tiquete {
 	public boolean estaUsado() {
 	    return usado;
 	}
+	@Override
+	public String generarContenidoQR() {
+	    return "ID:" + getId() + "|Tipo:Regular|Fecha:No hay fecha";
+	}
+
 }
 
