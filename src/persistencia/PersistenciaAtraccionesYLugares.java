@@ -16,12 +16,12 @@ import Venta_de_tiquetes.*;
 
 public class PersistenciaAtraccionesYLugares {
 
-    private static final String ARCHIVO_TIENDAS = "tiendas.json";
-    private static final String ARCHIVO_CAFETERIAS = "cafeterias.json";
-    private static final String ARCHIVO_MECANICAS = "mecanicas.json";
-    private static final String ARCHIVO_CULTURALES = "culturales.json";
-    private static final String ARCHIVO_ESPECTACULOS = "espectaculos.json";
-    private static final String ARCHIVO_TAQUILLAS = "taquillas.json";
+    private static final String ARCHIVO_TIENDAS = "data/tiendas.json";
+    private static final String ARCHIVO_CAFETERIAS = "data/cafeterias.json";
+    private static final String ARCHIVO_MECANICAS = "data/mecanicas.json";
+    private static final String ARCHIVO_CULTURALES = "data/culturales.json";
+    private static final String ARCHIVO_ESPECTACULOS = "data/espectaculos.json";
+    private static final String ARCHIVO_TAQUILLAS = "data/taquillas.json";
 
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(java.time.LocalDate.class, new persistencia.LocalDateAdapter())

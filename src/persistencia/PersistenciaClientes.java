@@ -20,7 +20,7 @@ import java.util.List;
 
 public class PersistenciaClientes {
 
-	private static final String RUTA_ARCHIVO = "clientes.json";
+	private static final String RUTA_ARCHIVO = "data/clientes.json";
     private final Gson gson;
 
     public PersistenciaClientes() {

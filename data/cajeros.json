@@ -6,26 +6,5 @@
     "capacitaciones": [],
     "turnosAsignados": [],
     "dinero": 0
-  },
-  {
-    "ID": 1,
-    "login": "ola",
-    "contraseña": "ola",
-    "capacitaciones": [],
-    "turnosAsignados": [
-      {
-        "turnoNocturno": true,
-        "fecha": "2025-05-28",
-        "queSoy": "Atraccion",
-        "idLugar": "Rueda"
-      },
-      {
-        "turnoNocturno": false,
-        "fecha": "2025-05-28",
-        "queSoy": "Atraccion",
-        "idLugar": "Museo"
-      }
-    ],
-    "dinero": 0
   }
 ]

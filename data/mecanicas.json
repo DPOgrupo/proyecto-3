@@ -4,7 +4,6 @@
     "pesoMax": 0,
     "alturaMin": 0,
     "alturaMax": 0,
-    "contraindicacciones": "",
     "ubicacionFija": "Zona A",
     "cupoMaximo": 20,
     "minEmpleadosEncargados": 2,
@@ -12,23 +11,7 @@
     "danado": false,
     "nivelDeRiesgo": "ALTO",
     "clientes": [],
-    "cajerosAsociados": [
-      {
-        "ID": 1,
-        "login": "ola",
-        "contraseña": "ola",
-        "capacitaciones": [],
-        "turnosAsignados": [
-          {
-            "turnoNocturno": true,
-            "fecha": "2025-05-28",
-            "queSoy": "Atraccion",
-            "idLugar": "Rueda"
-          }
-        ],
-        "dinero": 0
-      }
-    ],
+    "cajerosAsociados": [],
     "cocinerosAsociados": [],
     "serviciosAsociados": [],
     "idAtraccion": "Rueda",
