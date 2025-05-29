@@ -10,5 +10,31 @@
     "tiquetesIndividuales": [],
     "tiquetesTemporada": [],
     "tiquetesFastPass": []
+  },
+  {
+    "login": "miau",
+    "nombre": "samiau",
+    "contrasena": "miau",
+    "dinero": 1910009,
+    "edad": 20,
+    "restSalud": false,
+    "tiquetesRegulares": [],
+    "tiquetesIndividuales": [
+      {
+        "atraccionAsosiada": "Rueda",
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "31fa6e3d-7278-4c50-91b2-60662c7630c8"
+      }
+    ],
+    "tiquetesTemporada": [
+      {
+        "fechaInicio": "2025-05-29",
+        "fechaFin": "2025-05-30",
+        "categoria": "ORO",
+        "id": "14bc9996-d002-4da5-a824-c04d2f56ce96"
+      }
+    ],
+    "tiquetesFastPass": []
   }
 ]
