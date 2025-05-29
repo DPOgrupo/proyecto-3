@@ -5,60 +5,77 @@ import java.util.ArrayList;
 
 public class Cliente {
 
-	
-	
-	private String login; 
-	private String nombre;
-	private String contrasena; 
-	private List<Tiquete> tiquetesDeCliente;
-	private int dinero;
-	private int edad;
-	private boolean restSalud;
+    private String login;
+    private String nombre;
+    private String contrasena;
 
-	
-	public Cliente() {
-		
-	}
-	public Cliente(String nombre, String login, String contrasena, int dinero, int edad) {
-        this.nombre = nombre; 
-		this.login = login;
-		this.contrasena = contrasena; 
-        this.tiquetesDeCliente= new ArrayList<Tiquete>();
-        this.dinero = dinero; 
-        this.restSalud = false; 
-        this.edad = edad;
-    }
-	
-	public Cliente(String nombre, String login, String contrasena, int dinero, int edad, boolean rest) {
-        this.nombre = nombre; 
-		this.login = login;
-		this.contrasena = contrasena; 
-        this.tiquetesDeCliente= new ArrayList<Tiquete>();
-        this.dinero = dinero; 
-        this.restSalud = rest; 
-        this.edad = edad;
-    }
-	
-	public int getDinero() {
-		return this.dinero;
-	}
-	
-	public void setDinero(int dinero) {
-		this.dinero = dinero; 
-	}
-	
-	public void addTiquete(Tiquete tic) {
-		this.tiquetesDeCliente.add(tic);
-	}
-	
-	public String getNombre() {
-		return this.nombre;
-	}
-	
-	public List<Tiquete> getTiquetes(){
-		return this.tiquetesDeCliente;
-	}
+    private int dinero;
+    private int edad;
+    private boolean restSalud;
 
+    private List<TiqueteRegular> tiquetesRegulares;
+    private List<TiqueteIndividual> tiquetesIndividuales;
+    private List<TiqueteTemporada> tiquetesTemporada;
+    private List<TiqueteFastPass> tiquetesFastPass;
+
+    public Cliente() {
+        this.tiquetesRegulares = new ArrayList<>();
+        this.tiquetesIndividuales = new ArrayList<>();
+        this.tiquetesTemporada = new ArrayList<>();
+        this.tiquetesFastPass = new ArrayList<>();
+    }
+
+    public Cliente(String nombre, String login, String contrasena, int dinero, int edad) {
+        this(nombre, login, contrasena, dinero, edad, false);
+    }
+
+    public Cliente(String nombre, String login, String contrasena, int dinero, int edad, boolean rest) {
+        this.nombre = nombre;
+        this.login = login;
+        this.contrasena = contrasena;
+        this.dinero = dinero;
+        this.edad = edad;
+        this.restSalud = rest;
+
+        this.tiquetesRegulares = new ArrayList<>();
+        this.tiquetesIndividuales = new ArrayList<>();
+        this.tiquetesTemporada = new ArrayList<>();
+        this.tiquetesFastPass = new ArrayList<>();
+    }
+
+    public void addTiquete(Tiquete t) {
+        if (t instanceof TiqueteRegular r) {
+            tiquetesRegulares.add(r);
+        } else if (t instanceof TiqueteIndividual i) {
+            tiquetesIndividuales.add(i);
+        } else if (t instanceof TiqueteTemporada temp) {
+            tiquetesTemporada.add(temp);
+        } else if (t instanceof TiqueteFastPass f) {
+            tiquetesFastPass.add(f);
+        }
+    }
+
+    public List<Tiquete> getTiquetes() {
+        List<Tiquete> todos = new ArrayList<>();
+        todos.addAll(tiquetesRegulares);
+        todos.addAll(tiquetesIndividuales);
+        todos.addAll(tiquetesTemporada);
+        todos.addAll(tiquetesFastPass);
+        return todos;
+    }
+
+
+    public int getDinero() {
+        return this.dinero;
+    }
+
+    public void setDinero(int dinero) {
+        this.dinero = dinero;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 	
 	public String getContrasena() {
 		return this.contrasena;

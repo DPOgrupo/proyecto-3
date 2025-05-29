@@ -7,6 +7,10 @@ public class ServicioGeneral extends Empleado {
     public ServicioGeneral(int ID,String login, String contraseña,int dinero) {
         super( ID,login, contraseña, dinero);
     }
+ // Constructor vacío requerido por Gson
+    public ServicioGeneral() {
+        super(0, "", "", 0);
+    }
 
     public void reparar(Atraccion atraccion) {
     	

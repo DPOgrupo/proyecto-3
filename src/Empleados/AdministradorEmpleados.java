@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import AtraccionesYServicio.AdministradorAtraccionesYLugares;
 import AtraccionesYServicio.Atraccion;
 
 public class AdministradorEmpleados {
@@ -80,11 +81,18 @@ public class AdministradorEmpleados {
         empleado.añadirCapacitacion(nuevaCapacitacion);
     }
 
-    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, LugarDeServicio lugar) {//fecha cualquiera
+    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, Cafeteria cafeteria) {
         Turno turno = new Turno(fecha, turnoNocturno);
-        turno.setLugar(lugar);
+        turno.setLugar(cafeteria);
         return turno;
     }
+
+    public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, Tienda tienda) {
+        Turno turno = new Turno(fecha, turnoNocturno);
+        turno.setLugar(tienda);
+        return turno;
+    }
+
 
     public Turno crearTurno(LocalDate fecha, boolean turnoNocturno, Atraccion lugar) {
         Turno turno = new Turno(fecha, turnoNocturno);
@@ -98,22 +106,7 @@ public class AdministradorEmpleados {
     }
 
 
-    public void cambiarCocineroACajero(Empleado empleado, Cafeteria cafeteria) {
-        if (empleado instanceof Cocinero) {
-        	
-            if (cafeteria.getCocinerosAsociados().contains(empleado)) {
-            	
-                cafeteria.quitarCocinero(empleado); // Lo saca como cocinero
-                cafeteria.añadirEmpleado(empleado); // Lo agrega como cajero usando método heredado
-                
-                System.out.println("Empleado cambiado de Cocinero a Cajero en la Cafetería.");
-            } else {
-                System.out.println("El empleado no está asociado como cocinero en esta cafetería.");
-            }
-        } else {
-            System.out.println("El empleado no es un Cocinero.");
-        }
-    }
+
     public void mostrarTurnoDeEmpleado(Empleado empleado) {
         for (Turno turno : empleado.getTurnoAsignado(LocalDate.now())) //Turnos de hoy
         
@@ -161,97 +154,104 @@ public class AdministradorEmpleados {
 
 
 	public void cambioDeTurno(Empleado empleado, boolean turnoNocturno) {
-        LocalDate hoy = LocalDate.now();
-        Turno turnoAnterior = null;
-        Turno turnoAhora = null;
-        List<Turno> turnosHoy = empleado.getTurnoAsignado(hoy);
+		System.out.println(empleado);
+	    LocalDate hoy = LocalDate.now();
+	    Turno turnoAnterior = null;
+	    Turno turnoActual = null;
 
-        if (turnoNocturno) {
-            // Si es nocturno, buscamos el diurno de hoy (anterior)
-            for (Turno t : turnosHoy) {
-                if (!t.isTurnoNocturno()) {
-                    turnoAnterior = t;
-                }
-                if (t.isTurnoNocturno()) {
-                    turnoAhora = t;
-                }
-            }
-        } else {
-            // Si es diurno, buscamos el diurno de hoy (actual)
-            for (Turno t : turnosHoy) {
-                if (!t.isTurnoNocturno()) {
-                    turnoAhora = t;
-                }
-            }
+	    List<Turno> turnosHoy = empleado.getTurnoAsignado(hoy);
 
-            // Y buscamos el turno nocturno más reciente anterior a hoy (anterior)
-            for (Turno t : empleado.getTurnosAsignados()) {
-                if (t.getFecha().isBefore(hoy) && t.isTurnoNocturno()) {
-                    if (turnoAnterior == null || t.getFecha().isAfter(turnoAnterior.getFecha())) {
-                        turnoAnterior = t;
-                    }
-                }
-            }
-        }
+	    for (Turno t : turnosHoy) {
+	        if (t.isTurnoNocturno() == turnoNocturno) {
+	            turnoActual = t;
+	        } else {
+	            turnoAnterior = t;
+	        }
+	    }
+	    if (!turnoNocturno && turnoAnterior == null) {
+	        for (Turno t : empleado.getTurnosAsignados()) {
+	            if (t.isTurnoNocturno() && t.getFecha().isBefore(hoy)) {
+	                if (turnoAnterior == null || t.getFecha().isAfter(turnoAnterior.getFecha())) {
+	                    turnoAnterior = t;
+	                }
+	            }
+	        }
+	    }
+	    // Quitar del lugar anterior
+	    if (turnoAnterior != null) {
+	        Object lugarAnterior = turnoAnterior.getLugar();
+	        String tipo = turnoAnterior.getQueSoy();
+	        //ver si es lugar de servicio o atraccion 
+		        if ("Tienda".equals(tipo) || "Cafeteria".equals(tipo)) {
+	            LugarDeServicio lugar = (LugarDeServicio) lugarAnterior;
 
-        // 1. Quitar del lugar anterior
-        if (turnoAnterior != null) {
-            Object lugarAnterior = turnoAnterior.getLugar();
+	            if (empleado instanceof Cajero cajero) {
+	                lugar.quitarCajero(cajero);
+	            } else if (empleado instanceof Cocinero cocinero) {
+	                lugar.quitarCocinero(cocinero);
+	            } else if (empleado instanceof ServicioGeneral servicio) {
+	                lugar.quitarServicio(servicio);
+	            }
 
-            if (turnoAnterior.getQueSoy().equals("LugarDeServicio")) {
-            	
-                LugarDeServicio lugar = (LugarDeServicio) lugarAnterior;
-                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) {
-                	
-                    ((Cafeteria) lugar).quitarCocinero(empleado);
-                } 
-                else 
-                {
-                    lugar.quitarEmpleado(empleado);
-                }
+	        } else if ("Atraccion".equals(tipo)) {
+	            Atraccion atraccion = (Atraccion) lugarAnterior;
 
-            } 
-            else if (turnoAnterior.getQueSoy().equals("Atraccion")) 
-            {
-                ((Atraccion) lugarAnterior).quitarEmpleado(empleado);
-            }
+	            if (empleado instanceof Cajero cajero) {
+	                atraccion.quitarCajero(cajero);
+	            } else if (empleado instanceof Cocinero cocinero) {
+	                atraccion.quitarCocinero(cocinero);
+	            } else if (empleado instanceof ServicioGeneral servicio) {
+	                atraccion.quitarServicio(servicio);
+	            }
+	        }
+	        empleado.getTurnosAsignados().remove(turnoAnterior);
 
-            empleado.getTurnosAsignados().remove(turnoAnterior);
-        } 
-        else 
-        {
-            System.out.println("No se encontró un turno anterior para hacer el cambio.");
-        }
+	    } else {
+	        System.out.println("No se encontró un turno anterior para hacer el cambio.");
+	    }
 
-        // 2. Añadir al nuevo lugar
-        if (turnoAhora != null) {
-            Object lugarAhora = turnoAhora.getLugar();
+	    // Añadir al nuevo lugar
+	    if (turnoActual != null) {
+	        Object lugarActual = turnoActual.getLugar();
+	        String tipo = turnoActual.getQueSoy();
+	        System.out.println(turnoActual.getLugar());
+	        //ver si es lugar de servicio o atraccion 
+	        if ("Tienda".equals(tipo) || "Cafeteria".equals(tipo)) {
+	            LugarDeServicio lugar = (LugarDeServicio) lugarActual;
 
-            if (turnoAhora.getQueSoy().equals("LugarDeServicio")) 
-            {
-                LugarDeServicio lugar = (LugarDeServicio) lugarAhora;
-                
-                if (lugar instanceof Cafeteria && empleado instanceof Cocinero) 
-                {
-                    ((Cafeteria) lugar).añadirCocinero(empleado);
-                }
-                else 
-                {
-                    lugar.añadirEmpleado(empleado);
-                }
+	            if (empleado instanceof Cajero cajero) {
+	                lugar.añadirCajero(cajero);
+	            } else if (empleado instanceof Cocinero cocinero) {
+	                lugar.añadirCocinero(cocinero);
+	            } else if (empleado instanceof ServicioGeneral servicio) {
+	                lugar.añadirServicio(servicio);
+	            }
 
-            } 
-            else if (turnoAhora.getQueSoy().equals("Atraccion")) 
-            {
-                ((Atraccion) lugarAhora).añadirEmpleado(empleado);
-            }
+	        } else if ("Atraccion".equals(tipo)) {
+	            Atraccion atraccion = (Atraccion) lugarActual;
 
-        } 
-        else 
-        {
-            System.out.println("No se encontró un turno actual para realizar el cambio.");
-        }
-    }
+	            if (empleado instanceof Cajero cajero) {
+	                atraccion.añadirCajero(cajero);
+	                
+	                System.out.println(atraccion.getCajerosAsociados()+"rah");
+	            } else if (empleado instanceof Cocinero cocinero) {
+	                atraccion.añadirCocinero(cocinero);
+	                System.out.println(atraccion.getCocinerosAsociados()+"rahh");
+	            } else if (empleado instanceof ServicioGeneral servicio) {
+	                atraccion.añadirServicio(servicio);
+	                System.out.println(atraccion.getServiciosAsociados()+"rahhh");
+	            }
+	        }
+
+	    } else {
+	        System.out.println("No se encontró un turno actual para realizar el cambio.");
+	    }
+
+	    System.out.println("Turno reasignado correctamente.");
+	}
+
+
+
 
     public void cambiarTurnoGlobal(boolean turnoNocturno) {
     	
@@ -270,6 +270,62 @@ public class AdministradorEmpleados {
             cambioDeTurno(servicio, turnoNocturno);
         }
     }
+    
+    // recuperar lugares por el transient en turno (lugar)
+    public void reconectarTurnosConLugares(AdministradorAtraccionesYLugares adminAtr) {
+        for (Cajero cajero : cajeros) {
+        	restaurarTurnos(cajero, adminAtr);
+        }
+        for (Cocinero cocinero : cocineros) {
+        	restaurarTurnos(cocinero, adminAtr);
+        }
+        for (ServicioGeneral servicio : servicios) {
+        	restaurarTurnos(servicio, adminAtr);
+        }
+    }
+
+    private void restaurarTurnos(Empleado empleado, AdministradorAtraccionesYLugares adminAtr) {
+        for (Turno turno : empleado.getTurnosAsignados()) {
+            String tipo = turno.getQueSoy();
+            String id = turno.getIdLugar();
+
+            if (tipo == null || id == null) continue;
+
+            switch (tipo) {
+                case "Tienda" -> {
+                    for (Tienda cadaTienda : adminAtr.getTiendas()) {
+                        if (("Tienda_" + cadaTienda.getNumeroJuguetes()).equals(id)) {
+                            turno.setLugar(cadaTienda);
+                            break;
+                        }
+                    }
+                }
+                case "Cafeteria" -> {
+                    for (Cafeteria cadaCafeteria : adminAtr.getCafeterias()) {
+                        if (("Cafeteria_" + cadaCafeteria.getNumeroComidas()).equals(id)) {
+                            turno.setLugar(cadaCafeteria);
+                            break;
+                        }
+                    }
+                }
+                case "Atraccion" -> {
+                    for (Atraccion cadaAtraccion : adminAtr.getMecanicas()) {
+                        if (cadaAtraccion.getIdAtraccion().equals(id)) {
+                            turno.setLugar(cadaAtraccion);
+                            break;
+                        }
+                    }
+                    for (Atraccion cadaAtraccion : adminAtr.getCulturales()) {
+                        if (cadaAtraccion.getIdAtraccion().equals(id)) {
+                            turno.setLugar(cadaAtraccion);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     	
 

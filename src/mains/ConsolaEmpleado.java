@@ -1,6 +1,8 @@
 package mains;
 
 import Empleados.*;
+import persistencia.PersistenciaEmpleados;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -15,10 +17,7 @@ public class ConsolaEmpleado {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             AdministradorEmpleados adminEmp = new AdministradorEmpleados("admin", "123");
 
-            // Solo para pruebas 
-            adminEmp.crearCajero("juan", "123");
-            adminEmp.crearCocinero("maria", "123");
-            adminEmp.crearServicioGeneral("pedro", "123");
+            PersistenciaEmpleados.cargarEmpleados(adminEmp);
 
             System.out.println("=== INGRESO DE EMPLEADO ===");
 
@@ -47,7 +46,6 @@ public class ConsolaEmpleado {
                 switch (opcion) {
                     case 1 -> mostrarTurnosEmpleado(empleado);
                     case 0 -> System.out.println("Sesión finalizada.");
-                    
                 }
             }
 
@@ -63,7 +61,6 @@ public class ConsolaEmpleado {
         todos.addAll(adminEmp.getServicios());
 
         for (Empleado cadaEmpleado : todos) {
-        	
             if (cadaEmpleado.getLogin().equals(login) && cadaEmpleado.verificarContraseña(contraseña)) {
                 return cadaEmpleado;
             }

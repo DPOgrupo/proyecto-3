@@ -1,11 +1,17 @@
 package Venta_de_tiquetes;
 
+import java.time.LocalDate;
+
 public class TiqueteIndividual extends Tiquete {
 
 	private String atraccionAsosiada;
 	private boolean usado;
 	
-	
+    public TiqueteIndividual() {
+		super(CategoriaExclusividad.BASICO);
+		this.atraccionAsosiada = ""; 
+		this.usado = false;
+	}
 	public TiqueteIndividual(String atraccionAsosiada) {
 		super(CategoriaExclusividad.BASICO);
 		this.atraccionAsosiada = atraccionAsosiada; 

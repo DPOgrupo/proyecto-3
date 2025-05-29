@@ -1,0 +1,19 @@
+[
+  {
+    "edadMin": 8,
+    "restriccionClima": "Lluvia",
+    "ubicacionFija": "Zona B",
+    "cupoMaximo": 10,
+    "minEmpleadosEncargados": 1,
+    "nivelExclusividad": 0,
+    "danado": false,
+    "nivelDeRiesgo": "MEDIO",
+    "clientes": [],
+    "cajerosAsociados": [],
+    "cocinerosAsociados": [],
+    "serviciosAsociados": [],
+    "idAtraccion": "Museo",
+    "temporada": "Todo el año",
+    "disponible": false
+  }
+]

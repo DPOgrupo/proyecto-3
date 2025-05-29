@@ -3,6 +3,8 @@ package mains;
 import AtraccionesYServicio.*;
 import Venta_de_tiquetes.*;
 import Empleados.*;
+import persistencia.PersistenciaAtraccionesYLugares;
+import persistencia.PersistenciaClientes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,9 +16,19 @@ import java.util.List;
 public class ConsolaCliente {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        PersistenciaClientes persistenciaClientes = new PersistenciaClientes();
+        PersistenciaAtraccionesYLugares persistenciaLugares = new PersistenciaAtraccionesYLugares();
+
         AdministradorTiquetes adminTiquetes = new AdministradorTiquetes();
         AdministradorAtraccionesYLugares adminAtr = new AdministradorAtraccionesYLugares();
-        adminAtr.crearTaquilla();
+
+        adminTiquetes.setClientesRegistrados(persistenciaClientes.cargarClientes());
+        persistenciaLugares.cargarDatos(adminAtr);
+
+        if (adminAtr.getTaquillas().isEmpty()) {
+            adminAtr.crearTaquilla();
+        }
+
         Cliente cliente = null;
 
         try {
@@ -72,54 +84,45 @@ public class ConsolaCliente {
                 int opcion1 = Integer.parseInt(reader.readLine());
 
                 switch (opcion1) {
-	                case 1 -> {
-	                    if (adminAtr.getTaquillas().isEmpty()) {
-	                        System.out.println("No hay taquillas disponibles.");
-	                    }
-	
-	                    Taquilla taquilla = adminAtr.getTaquillas().get(0);
-	                    PlataformaDeVentaOnline plataforma = new PlataformaDeVentaOnline(taquilla, cliente);
-	                    plataforma.showPlataformaDeVenta(); 
-	                }
-
-
+                    case 1 -> {
+                        Taquilla taquilla = adminAtr.getTaquillas().get(0);
+                        PlataformaDeVentaOnline plataforma = new PlataformaDeVentaOnline(taquilla, cliente);
+                        plataforma.showPlataformaDeVenta();
+                    }
                     case 2 -> {
                         Atraccion atraccion = seleccionarAtraccion(adminAtr, reader);
-                        if (atraccion != null && atraccion.cumpleRestricciones(cliente)) {
-                            atraccion.añadirCliente(cliente);
+                        
+                        
+                        if (atraccion.cumpleRestricciones(cliente)) {
                             System.out.println("¡Te montaste en " + atraccion.getIdAtraccion() + "!");
                         } else {
                             System.out.println("No puedes ingresar a esta atracción.");
                         }
                     }
-
                     case 3 -> {
-
-                    	Tienda tienda = seleccionarTienda(adminAtr, reader);
+                        Tienda tienda = seleccionarTienda(adminAtr, reader);
                         if (tienda == null) {
-                        	System.out.println("Escoja una opcion valida");
-                        	break;}
-
+                            System.out.println("Escoja una opción válida.");
+                            break;
+                        }
                         System.out.print("¿Cuántos juguetes desea comprar?: ");
                         int cantidad = Integer.parseInt(reader.readLine());
-
                         tienda.venderTiquetes(cantidad, cliente);
                     }
                     case 4 -> {
-                        
-                    	Cafeteria cafeteria = seleccionarCafeteria(adminAtr, reader);
+                        Cafeteria cafeteria = seleccionarCafeteria(adminAtr, reader);
                         if (cafeteria == null) {
-                        	System.out.println("Escoja una opcion valida");
-                        	break;}
-
+                            System.out.println("Escoja una opción válida.");
+                            break;
+                        }
                         System.out.print("¿Cuántos almuerzos desea comprar?: ");
                         int cantidad = Integer.parseInt(reader.readLine());
-
                         cafeteria.venderAlmuerzos(cantidad, cliente);
                     }
-
                     case 0 -> {
-                        System.out.println("Gracias por su visita.");
+                        persistenciaClientes.guardarClientes(adminTiquetes.getClientesRegistrados());
+                        persistenciaLugares.guardarDatos(adminAtr);
+                        System.out.println("Gracias por su visita. Datos guardados.");
                         return;
                     }
                 }
@@ -174,7 +177,7 @@ public class ConsolaCliente {
 
     public static Tienda seleccionarTienda(AdministradorAtraccionesYLugares adminAtr, BufferedReader reader) throws IOException {
         List<Tienda> tiendas = adminAtr.getTiendas();
-        
+
         if (tiendas.isEmpty()) {
             System.out.println("No hay tiendas registradas.");
             return null;

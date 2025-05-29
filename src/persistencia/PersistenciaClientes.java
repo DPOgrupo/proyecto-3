@@ -25,6 +25,7 @@ public class PersistenciaClientes {
 
     public PersistenciaClientes() {
         gson = new GsonBuilder()
+        	    .registerTypeAdapter(java.time.LocalDate.class, new persistencia.LocalDateAdapter())
                 .setPrettyPrinting()
                 .create();
     }

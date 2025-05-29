@@ -1,0 +1,13 @@
+[
+  {
+    "productividad": 1,
+    "ID": 2,
+    "login": "cocinero1",
+    "contraseña": "pass2",
+    "capacitaciones": [
+      "COCINA"
+    ],
+    "turnosAsignados": [],
+    "dinero": 0
+  }
+]

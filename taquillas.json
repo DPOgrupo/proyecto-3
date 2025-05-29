@@ -1,0 +1,27 @@
+[
+  {
+    "calc": {
+      "precioBaseRegular": 50000.0,
+      "precioBaseIndividual": 15000.0,
+      "precioBaseFastPass": 20000.0,
+      "descuentoParaEmpleados": 0.5,
+      "multiplicadorExclusividad": {
+        "FAMILIAR": 1.0,
+        "ORO": 1.5,
+        "BASICO": 0.2,
+        "DIAMANTE": 2.0
+      },
+      "descuentoPorDuracion": {
+        "DIA": 1.0,
+        "SEMANA": 0.75,
+        "MES": 0.5,
+        "ESTACION": 0.4,
+        "ANO": 0.3
+      }
+    },
+    "disponible": false,
+    "cajerosAsociados": [],
+    "cocinerosAsociados": [],
+    "serviciosAsociados": []
+  }
+]

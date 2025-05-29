@@ -4,6 +4,14 @@ public class TiqueteRegular extends Tiquete {
 
 	private boolean usado; 
 	
+	
+	
+	public TiqueteRegular() 
+	{
+		super(CategoriaExclusividad.BASICO);
+		this.usado = false; 
+	}
+	
 	public TiqueteRegular(CategoriaExclusividad categoria) 
 	{
 		super(categoria);

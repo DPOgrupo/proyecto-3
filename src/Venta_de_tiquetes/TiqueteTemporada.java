@@ -8,6 +8,12 @@ public class TiqueteTemporada extends Tiquete {
 	private LocalDate fechaInicio;
     private LocalDate fechaFin;
 
+    
+    public TiqueteTemporada() {
+		super(CategoriaExclusividad.BASICO);
+		this.fechaInicio = LocalDate.now();
+		this.fechaFin = LocalDate.now();
+	}
 	public TiqueteTemporada(CategoriaExclusividad categoria, LocalDate fInicio, LocalDate fFin) {
 		super(categoria);
 		this.fechaInicio = fInicio; 

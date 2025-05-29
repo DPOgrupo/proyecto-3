@@ -19,13 +19,22 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import persistencia.PersistenciaAtraccionesYLugares;
+import persistencia.PersistenciaEmpleados;
+
+
 public class ConsolaAdministrador {
     public static void main(String[] args) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             AdministradorEmpleados adminEmp = new AdministradorEmpleados("admin", "123");
-            
             AdministradorAtraccionesYLugares adminAtr = new AdministradorAtraccionesYLugares();
+
+            PersistenciaEmpleados.cargarEmpleados(adminEmp);
+            PersistenciaAtraccionesYLugares persistAtr = new PersistenciaAtraccionesYLugares();
+            persistAtr.cargarDatos(adminAtr);
+            adminEmp.reconectarTurnosConLugares(adminAtr);
+
 
             System.out.println("=== BIENVENIDO ADMINISTRADOR ===");
             System.out.print("Ingrese login: ");
@@ -233,24 +242,32 @@ public class ConsolaAdministrador {
                         if (tipoLugar == 1) {
                             Atraccion atraccion = seleccionarAtraccion(adminAtr, reader);
                             if (atraccion == null) {
-                            	System.out.println("Escoja una opcion valida");
-                            	return;
-                            	}
-
-
+                                System.out.println("Escoja una opción válida");
+                                return;
+                            }
                             turno = adminEmp.crearTurno(LocalDate.now(), turnoNocturno, atraccion);
-                        } else if (tipoLugar == 2) {
-                            LugarDeServicio lugar = seleccionarLugarDeServicio(adminAtr, reader);
-                            if (lugar == null){
-                            	System.out.println("Escoja una opcion valida");
-                            	return;
-                            	}
 
-                            turno = adminEmp.crearTurno(LocalDate.now(), turnoNocturno, lugar);
+                        } else if (tipoLugar == 2) {
+                            Object lugar = seleccionarLugarDeServicio(adminAtr, reader);
+                            if (lugar == null) {
+                                System.out.println("Escoja una opción válida");
+                                return;
+                            }
+
+                            if (lugar instanceof Tienda tienda) {
+                                turno = adminEmp.crearTurno(LocalDate.now(), turnoNocturno, tienda);
+                            } else if (lugar instanceof Cafeteria cafeteria) {
+                                turno = adminEmp.crearTurno(LocalDate.now(), turnoNocturno, cafeteria);
+                            } else {
+                                System.out.println("Tipo de lugar no reconocido.");
+                                return;
+                            }
+
                         } else {
                             System.out.println("Opción inválida.");
                             return;
                         }
+
 
                         adminEmp.cambiarTurno(elegido, turno);
                         System.out.println("Turno asignado correctamente.");
@@ -260,10 +277,15 @@ public class ConsolaAdministrador {
                 }
             } 
 
-            // TODO: guardar cambios en archivos automáticamente
+            PersistenciaEmpleados.guardarEmpleados(adminEmp);
+            persistAtr.guardarDatos(adminAtr);
+            System.out.println("Datos guardados. Saliendo...");
+
 
         } catch (Exception e) {
             System.err.println("Error en la consola del administrador: " + e.getMessage());
+            e.printStackTrace();
+
         }
         
         
@@ -328,8 +350,8 @@ public class ConsolaAdministrador {
         return atracciones.get(seleccion);
     }
     
-    public static LugarDeServicio seleccionarLugarDeServicio(AdministradorAtraccionesYLugares adminAtr, BufferedReader reader) throws IOException {
-        List<LugarDeServicio> lugares = new ArrayList<>();
+    public static Object seleccionarLugarDeServicio(AdministradorAtraccionesYLugares adminAtr, BufferedReader reader) throws IOException {
+        List<Object> lugares = new ArrayList<>();
         int index = 0;
 
         System.out.println("Seleccione un lugar de servicio:");
@@ -352,10 +374,9 @@ public class ConsolaAdministrador {
         System.out.print("Ingrese el número del lugar: ");
         int seleccion = Integer.parseInt(reader.readLine());
 
-        
-
         return lugares.get(seleccion);
     }
+
 
 
     

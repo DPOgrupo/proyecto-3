@@ -1,4 +1,5 @@
 package AtraccionesYServicio;
+import Empleados.*;
 
 
 import Empleados.Empleado;
@@ -14,9 +15,11 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
     protected int minEmpleadosEncargados;
     protected int nivelExclusividad; // Basico, Familiar, Oro, Diamante--> 0,1,2,3
     protected boolean danado; 
-    protected List<Empleado> empleados;
     protected String nivelDeRiesgo;
 	private List<Cliente> clientes;
+    protected List<Cajero> cajerosAsociados;
+    protected List<Cocinero> cocinerosAsociados;
+    protected List<ServicioGeneral> serviciosAsociados;
     
 
     public Atraccion(String nombre,String temporada, String ubicacionFija, String nivelDeRiesgo,int cupoMaximo, int minEmpleadosEncargados, int nivelExclusividad) {
@@ -26,10 +29,13 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
         this.minEmpleadosEncargados = minEmpleadosEncargados;
         this.nivelExclusividad = nivelExclusividad;
         this.disponible = false;
-        this.empleados = new ArrayList<>();
         this.temporada =temporada; 
         this.nivelDeRiesgo = nivelDeRiesgo;
     	this.clientes = new ArrayList<>();
+        this.cajerosAsociados = new ArrayList<>();
+        this.cocinerosAsociados = new ArrayList<>();
+        this.serviciosAsociados = new ArrayList<>();
+        
 
     }
 
@@ -68,13 +74,12 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
     
     
     public void setDisponible() {
-    	
-    	
-        if (empleados.size() >= minEmpleadosEncargados && !danado && estaEnTemporada(LocalDate.now())) {
-            disponible = true;
-        } else {
-            disponible = false;
-        }
+        int total = cajerosAsociados.size() + cocinerosAsociados.size() + serviciosAsociados.size();
+        
+        if (!danado && estaEnTemporada(LocalDate.now()) && total >= minEmpleadosEncargados)
+        	this.disponible = true;
+        else 
+        	this.disponible = false;
     }
     
     
@@ -107,22 +112,55 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
         clientes.clear();
     }
 
-    public void añadirEmpleado(Empleado empleado) {
-    	
-        if (!empleados.contains(empleado)) {
-        	
-            empleados.add(empleado);
+    public void añadirCajero(Cajero cajero) {
+        if (!cajerosAsociados.contains(cajero)) {
+            cajerosAsociados.add(cajero);
             setDisponible();
         }
     }
 
-    public void quitarEmpleado(Empleado empleado) {
-    	
-        if (empleados.contains(empleado)) {
-        	
-            empleados.remove(empleado);
+    public void quitarCajero(Cajero cajero) {
+        if (cajerosAsociados.remove(cajero)) {
             setDisponible();
         }
+    }
+
+    public void añadirCocinero(Cocinero cocinero) {
+        if (!cocinerosAsociados.contains(cocinero)) {
+            cocinerosAsociados.add(cocinero);
+            setDisponible();
+        }
+    }
+
+    public void quitarCocinero(Cocinero cocinero) {
+        if (cocinerosAsociados.remove(cocinero)) {
+            setDisponible();
+        }
+    }
+
+    public void añadirServicio(ServicioGeneral servicio) {
+        if (!serviciosAsociados.contains(servicio)) {
+            serviciosAsociados.add(servicio);
+            setDisponible();
+        }
+    }
+
+    public void quitarServicio(ServicioGeneral servicio) {
+        if (serviciosAsociados.remove(servicio)) {
+            setDisponible();
+        }
+    }
+
+    public List<Cajero> getCajerosAsociados() {
+        return cajerosAsociados;
+    }
+
+    public List<Cocinero> getCocinerosAsociados() {
+        return cocinerosAsociados;
+    }
+
+    public List<ServicioGeneral> getServiciosAsociados() {
+        return serviciosAsociados;
     }
 
     public void setDañado(boolean estado) {
@@ -149,9 +187,6 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
         return nivelExclusividad;
     }
 
-    public List<Empleado> getEmpleados() {
-        return empleados;
-    }
     
     public String getTemporada() {
         return temporada;
@@ -163,9 +198,17 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
 	}
     
     
+    
+    public String getIdAtraccion() {
+		return idAtraccion;
+	}
+    
+    
 	public List<Cliente> getClientes() {
 		return clientes;
 	}
+	
+	
 
 
 

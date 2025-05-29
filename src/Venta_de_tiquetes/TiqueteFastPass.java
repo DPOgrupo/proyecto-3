@@ -9,7 +9,14 @@ public class TiqueteFastPass extends Tiquete {
     private LocalDate fechaFin;
 
 	
-    public TiqueteFastPass(LocalDate fInicio, LocalDate fFin) {
+    
+    public TiqueteFastPass() {
+		super(CategoriaExclusividad.BASICO);
+		this.fechaInicio = LocalDate.now();
+		this.fechaFin = LocalDate.now();
+	}
+
+	public TiqueteFastPass(LocalDate fInicio, LocalDate fFin) {
 		super(CategoriaExclusividad.BASICO);
 		this.fechaInicio = fInicio; 
 		this.fechaFin = fFin; 

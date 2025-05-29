@@ -72,7 +72,7 @@ public class Tienda extends LugarDeServicio {
         }
 
         Empleado vendedor = cajerosAsociados.get(0);
-        vendedor.cobrar(10, cantidad, cliente);// 10 unidades por almuerzo
+        vendedor.cobrar(10, cantidad, cliente);// 10 unidades por juguete
         quitarJuguetes(cantidad);
     }
 

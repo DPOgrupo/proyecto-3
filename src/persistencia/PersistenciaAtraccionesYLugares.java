@@ -9,6 +9,7 @@ import Empleados.*;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Venta_de_tiquetes.*;
@@ -22,11 +23,12 @@ public class PersistenciaAtraccionesYLugares {
     private static final String ARCHIVO_ESPECTACULOS = "espectaculos.json";
     private static final String ARCHIVO_TAQUILLAS = "taquillas.json";
 
-    private final Gson gson;
+    private static final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(java.time.LocalDate.class, new persistencia.LocalDateAdapter())
+            .setPrettyPrinting()
+            .create();
 
-    public PersistenciaAtraccionesYLugares() {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
-    }
+    public PersistenciaAtraccionesYLugares() {}
 
     public void guardarDatos(AdministradorAtraccionesYLugares admin) {
         try (FileWriter writer1 = new FileWriter(ARCHIVO_TIENDAS);
@@ -57,12 +59,12 @@ public class PersistenciaAtraccionesYLugares {
              FileReader reader5 = new FileReader(ARCHIVO_ESPECTACULOS);
              FileReader reader6 = new FileReader(ARCHIVO_TAQUILLAS)) {
 
-            List<Tienda> tiendas = List.of(gson.fromJson(reader1, Tienda[].class));
-            List<Cafeteria> cafeterias = List.of(gson.fromJson(reader2, Cafeteria[].class));
-            List<AtraccionMecanica> mecanicas = List.of(gson.fromJson(reader3, AtraccionMecanica[].class));
-            List<AtraccionCultural> culturales = List.of(gson.fromJson(reader4, AtraccionCultural[].class));
-            List<Espectaculo> espectaculos = List.of(gson.fromJson(reader5, Espectaculo[].class));
-            List<Taquilla> taquillas = List.of(gson.fromJson(reader6, Taquilla[].class));
+            List<Tienda> tiendas = new ArrayList<>(List.of(gson.fromJson(reader1, Tienda[].class)));
+            List<Cafeteria> cafeterias = new ArrayList<>(List.of(gson.fromJson(reader2, Cafeteria[].class)));
+            List<AtraccionMecanica> mecanicas = new ArrayList<>(List.of(gson.fromJson(reader3, AtraccionMecanica[].class)));
+            List<AtraccionCultural> culturales = new ArrayList<>(List.of(gson.fromJson(reader4, AtraccionCultural[].class)));
+            List<Espectaculo> espectaculos = new ArrayList<>(List.of(gson.fromJson(reader5, Espectaculo[].class)));
+            List<Taquilla> taquillas = new ArrayList<>(List.of(gson.fromJson(reader6, Taquilla[].class)));
 
             admin.setTiendas(tiendas);
             admin.setCafeterias(cafeterias);

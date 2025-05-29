@@ -8,6 +8,10 @@ public class Cocinero extends Cajero {
 	    super( ID,login, contraseña, dinero);
 	    this.añadirCapacitacion("COCINA");
 	}
+    // Constructor vacío requerido por Gson
+    public Cocinero() {
+        super(0, "", "", 0);
+    }
 
     public void cocinar(Cafeteria cafeteria) {
         cafeteria.aumentarComidas(productividad);

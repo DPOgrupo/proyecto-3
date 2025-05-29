@@ -10,6 +10,10 @@ public class Cajero extends Empleado {
         super(ID,login, contraseña, dinero);
     }
 
+    // Constructor vacío requerido por Gson
+    public Cajero() {
+        super(0, "", "", 0); 
+    }
 
 	@Override
     public void cobrar(int precio, int cantidad, Cliente cliente) {

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPersistenciaTest {
+public class MainPersistenciaClientesTest {
 
 	public static void main(String[] args) {
         PersistenciaClientes persistencia = new PersistenciaClientes();

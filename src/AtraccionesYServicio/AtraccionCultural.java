@@ -14,9 +14,22 @@ public class AtraccionCultural extends Atraccion {
 	this.edadMin = edadMin;
 	this.restriccionClima = restriccionClima;
 	}
+    
+    
 
     	
-    @Override
+    public AtraccionCultural() {
+		super("", "", "", "", 0, 0, 0);
+		
+		this.edadMin = 0;
+		this.restriccionClima = "";
+		
+	}
+
+
+
+
+	@Override
     public boolean cumpleRestricciones(Cliente cliente) {
         if (cliente.getEdad() < edadMin) {
         	return false;
