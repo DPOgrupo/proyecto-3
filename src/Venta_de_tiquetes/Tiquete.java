@@ -18,6 +18,7 @@ public abstract class Tiquete {
 		return categoria;
 	}
 
+	
 	public abstract boolean esValidoPara(String idAtraccion);
 	public abstract void marcarUsado();
 	public abstract boolean estaUsado();
