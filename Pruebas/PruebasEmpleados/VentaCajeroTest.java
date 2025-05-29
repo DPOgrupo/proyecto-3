@@ -19,7 +19,7 @@ public class VentaCajeroTest {
 
         Tienda tienda = new Tienda();
         tienda.setNumeroJuguetes(10);
-        tienda.añadirEmpleado(cajero);
+        tienda.añadirCajero(cajero);
 
         tienda.venderTiquetes(2, cliente);
 
@@ -35,7 +35,7 @@ public class VentaCajeroTest {
 
         Cafeteria cafeteria = new Cafeteria();
         cafeteria.setNumeroComidas(5);
-        cafeteria.añadirEmpleado(cajero);
+        cafeteria.añadirCajero(cajero);
         cafeteria.añadirCocinero(cocinero);
 
         cafeteria.venderAlmuerzos(2, cliente);
@@ -49,7 +49,7 @@ public class VentaCajeroTest {
         Cliente cliente = new Cliente("cliente", "usuario", "1234", 100000, 18);
         Taquilla taquilla = new Taquilla();
         Cajero cajero = new Cajero(1, "taquillero", "clave", 0);
-        taquilla.añadirEmpleado(cajero);
+        taquilla.añadirCajero(cajero);
 
         taquilla.venderTiqueteRegular(cliente, CategoriaExclusividad.ORO, false);
 
@@ -77,7 +77,7 @@ public class VentaCajeroTest {
         Cafeteria cafeteria = new Cafeteria();
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         cafeteria.setNumeroComidas(5);
-        cafeteria.añadirEmpleado(cajero); // Falta cocinero
+        cafeteria.añadirCajero(cajero); // Falta cocinero
 
         cafeteria.venderAlmuerzos(1, cliente);
 
@@ -91,7 +91,7 @@ public class VentaCajeroTest {
         Cajero cajero = new Cajero(1, "cajero", "clave", 0);
         Tienda tienda = new Tienda();
         tienda.setNumeroJuguetes(1); 
-        tienda.añadirEmpleado(cajero);
+        tienda.añadirCajero(cajero);
 
         tienda.venderTiquetes(3, cliente); // Pide más de lo que hay
 
@@ -107,7 +107,7 @@ public class VentaCajeroTest {
 
         Cafeteria cafeteria = new Cafeteria();
         cafeteria.setNumeroComidas(2);
-        cafeteria.añadirEmpleado(cajero);
+        cafeteria.añadirCajero(cajero);
         cafeteria.añadirCocinero(cocinero);
 
         cafeteria.venderAlmuerzos(5, cliente); // Pide más de lo que hay

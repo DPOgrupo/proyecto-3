@@ -29,7 +29,7 @@ public class CafeteriaTest {
 
         assertFalse(cafeteria.isDisponible());
 
-        cafeteria.añadirEmpleado(cajero);
+        cafeteria.añadirCajero(cajero);
         assertFalse(cafeteria.isDisponible());
 
         cafeteria.añadirCocinero(cocinero);
@@ -41,7 +41,7 @@ public class CafeteriaTest {
         Cafeteria cafeteria = new Cafeteria();
         Cajero cajero = new Cajero(1,"cajero", "1234", 0);
 
-        cafeteria.añadirEmpleado(cajero);
+        cafeteria.añadirCajero(cajero);
         assertFalse(cafeteria.isDisponible());
     }
 

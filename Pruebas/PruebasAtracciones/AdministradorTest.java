@@ -32,7 +32,7 @@ public class AdministradorTest {
         montanaRusa = adminAtr.getMecanicas().get(0);
 
         cajero = adminEmp.getCajeros().get(0);
-        montanaRusa.añadirEmpleado(cajero);
+        montanaRusa.añadirCajero(cajero);
         montanaRusa.setDisponible();
 
         clienteValido = new Cliente("cliente", "cliente", "clave", 500, 15);
