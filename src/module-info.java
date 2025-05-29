@@ -13,6 +13,8 @@ module Proyecto1Entrega2 {
     opens AtraccionesYServicio to com.google.gson;
     opens Venta_de_tiquetes to com.google.gson;
     opens persistencia to com.google.gson;
+    
 }
+
 
 
