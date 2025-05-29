@@ -5,7 +5,7 @@ import java.util.UUID;
 public abstract class Tiquete {
 
     private CategoriaExclusividad categoria; 
-    protected String id; // ID único
+    protected String id; 
 
     public Tiquete() {
         this.id = generarIdUnico();

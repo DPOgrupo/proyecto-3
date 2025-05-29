@@ -1,10 +1,13 @@
 package Venta_de_tiquetes;
 
+import java.io.IOException;
 import java.time.LocalDate;
+
+import com.google.zxing.WriterException;
 
 public class Prueba2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WriterException, IOException {
         try {
             // Crear un cliente con suficiente dinero
             Cliente cliente1 = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500, 18);

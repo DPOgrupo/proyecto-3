@@ -1,16 +1,18 @@
 package Venta_de_tiquetes;
 
+import java.io.IOException;
 import java.time.LocalDate;
+
+import com.google.zxing.WriterException;
 
 import Empleados.LugarDeServicio;
 
 public class Taquilla extends LugarDeServicio{
 
-
 	private CalculadoraDePrecios calc = new CalculadoraDePrecios(); 
 	
 	public void venderTiqueteRegular(Cliente cliente, CategoriaExclusividad categoria, boolean empleado) 
-			 throws FondosInsuficientesException{
+			 throws FondosInsuficientesException, WriterException, IOException{
 		
 		// Calcular Precio del Tiquete 
 		int precio = calc.calcularPrecioRegular(categoria, empleado);
@@ -21,10 +23,13 @@ public class Taquilla extends LugarDeServicio{
 		// Cobrar al cliente &  Asociar  Tiquete al Cliente.
 		procesarVenta(cliente, precio, tic);
 		
+		//hacer QR
+		GeneradorDeQR.generarQR(tic.generarContenidoQR(), tic.getId());
+		
 		}
 	
 	public void venderTiqueteIndividual(Cliente cliente, String idAtraccion, boolean empleado) 
-			 throws FondosInsuficientesException{
+			 throws FondosInsuficientesException, WriterException, IOException{
 		
 		// Calcular precio del Tiquete
 		int precio = calc.calcularPrecioIndividual(empleado);
@@ -35,10 +40,13 @@ public class Taquilla extends LugarDeServicio{
 		// Cobrar al cliente &  Asociar  Tiquete al Cliente.
 		procesarVenta(cliente, precio, tic);
 		
+		//hacer QR
+		GeneradorDeQR.generarQR(tic.generarContenidoQR(), tic.getId());
+		
 		}
 	
 	public void venderTiqueteTemporada(Cliente cliente, CategoriaExclusividad categoria, UnidadTiempo unidad, int cantidad, boolean empleado ) 
-			throws FondosInsuficientesException{
+			throws FondosInsuficientesException, WriterException, IOException{
 		
 		// Calcular precio del Tiquete
 		int precio = calc.calcularPrecioTemporada(categoria, unidad, cantidad, empleado);
@@ -52,10 +60,12 @@ public class Taquilla extends LugarDeServicio{
 		// Cobrar al cliente &  Asociar  Tiquete al Cliente.
 		procesarVenta(cliente, precio, tic);
 		
+		//hacer QR
+		GeneradorDeQR.generarQR(tic.generarContenidoQR(), tic.getId());
 		}
 	
 	public void venderTiqueteFastPass(Cliente cliente, UnidadTiempo unidad, int cantidad, boolean empleado) 
-			throws FondosInsuficientesException{
+			throws FondosInsuficientesException, WriterException, IOException{
 		
 		// Calcular precio del Tiquete
 		int precio = calc.calcularPrecioFastPass(unidad, cantidad, empleado);
@@ -68,6 +78,8 @@ public class Taquilla extends LugarDeServicio{
 	    
 	    // Cobrar al cliente &  Asociar  Tiquete al Cliente.
 	    procesarVenta(cliente, precio, tic);
+		//hacer QR
+		GeneradorDeQR.generarQR(tic.generarContenidoQR(), tic.getId());
 	}
 	
 	public void cobrar(Cliente cliente, int precio) throws FondosInsuficientesException {

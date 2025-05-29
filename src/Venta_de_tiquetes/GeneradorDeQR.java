@@ -16,7 +16,9 @@ public class GeneradorDeQR {
         QRCodeWriter qrWriter = new QRCodeWriter();
         BitMatrix matrix = qrWriter.encode(datos, BarcodeFormat.QR_CODE, 300, 300);
 
-        Path rutaArchivo = new File("qr/" + nombreArchivo + ".png").toPath();
+        Path rutaArchivo = new File("QR/" + nombreArchivo + ".png").toPath();
         MatrixToImageWriter.writeToPath(matrix, "PNG", rutaArchivo);
+        
+        System.out.println("se generó");
     }
 }

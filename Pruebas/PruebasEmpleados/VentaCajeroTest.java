@@ -2,10 +2,13 @@ package PruebasEmpleados;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import com.google.zxing.WriterException;
 
 import Empleados.*;
 import Venta_de_tiquetes.*;
@@ -45,7 +48,7 @@ public class VentaCajeroTest {
     }
 
     @Test
-    public void testVentaEnTaquillaConCliente() throws FondosInsuficientesException {
+    public void testVentaEnTaquillaConCliente() throws FondosInsuficientesException, WriterException, IOException {
         Cliente cliente = new Cliente("cliente", "usuario", "1234", 100000, 18);
         Taquilla taquilla = new Taquilla();
         Cajero cajero = new Cajero(1, "taquillero", "clave", 0);

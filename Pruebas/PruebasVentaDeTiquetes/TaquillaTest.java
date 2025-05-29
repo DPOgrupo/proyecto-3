@@ -3,12 +3,17 @@ package PruebasVentaDeTiquetes;
 import Venta_de_tiquetes.*;
 
 import org.junit.jupiter.api.Test;
+
+import com.google.zxing.WriterException;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.IOException;
 
 public class TaquillaTest {
 
     @Test
-    public void testCompraDeTiquetesConDineroSuficiente() {
+    public void testCompraDeTiquetesConDineroSuficiente() throws WriterException, IOException {
         Cliente cliente = new Cliente("Santiago Rojas", "Yago", "Lucas1226", 1152500, 18);
         Taquilla taquilla = new Taquilla();
 
