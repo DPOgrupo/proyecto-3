@@ -55,7 +55,7 @@ public class Menu extends MyFrame {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
 		            		MyFrame frameIniciar = new MyFrame();
-		            		frameIniciar.setSize(500,500);
+		            		frameIniciar.setSize(550,600);
 		            		frameIniciar.setVisible(true);
 		            		frameIniciar.setTitle("Iniciar Secion");
 		            }
@@ -68,9 +68,10 @@ public class Menu extends MyFrame {
 		        BCrearCuenta.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
-		            	
-		            	
-		                
+		            		MyFrame frameIniciar = new MyFrame();
+		            		frameIniciar.setSize(550,600);
+		            		frameIniciar.setVisible(true);
+		            		frameIniciar.setTitle("Crear Cuenta");
 		            }
 		        });
 		        

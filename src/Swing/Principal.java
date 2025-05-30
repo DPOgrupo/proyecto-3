@@ -116,8 +116,47 @@ public class Principal {
         BAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Menu menuAdmin = new Menu();
+                MyFrame menuAdmin = new MyFrame();
                 menuAdmin.setTitle("Menu Administrador");
+                
+                menuAdmin.setSize(550, 600);
+                menuAdmin.setLayout(null);
+
+                menuAdmin.getContentPane().setBackground(new Color(0xE6763C));
+                
+                // Imagen del admin
+                MyLabel imagenAdmin = new MyLabel();
+                
+                Border border = BorderFactory.createLineBorder(new Color (78, 22 , 23) , 10);
+                imagenAdmin .setBorder(border);
+                
+                imagenAdmin .setBounds(130, 50, 300, 300); // Posición y tamaño definidos
+                ImageIcon logoAdmin = new ImageIcon("empleadoImagen.png");
+                imagenAdmin .setIcon(logoAdmin);
+                
+                //BOTON EMPELADO INICIAR SECION
+                MyButton BIniciarSecion = new MyButton();
+			    BIniciarSecion.setText("Iniciar Secion");
+			    						//x , y ,  tamaño x , tamaño y
+				BIniciarSecion.setBounds(170,400,215,65);
+
+				BIniciarSecion.setBackground(new Color(0xFF392C));
+				
+			    //Accion Iniciar Secion
+		        BIniciarSecion.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		            		MyFrame frameIniciar = new MyFrame();
+		            		frameIniciar.setSize(500,500);
+		            		frameIniciar.setVisible(true);
+		            		frameIniciar.setTitle("Iniciar Secion");
+		            }
+		        });
+               
+                // Agregar componentes y mostrar
+		        menuAdmin.add(BIniciarSecion);
+                menuAdmin.add(imagenAdmin);
+                menuAdmin.setVisible(true);                
             }
         });
         
