@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class MyFrame extends JFrame {
-    ImageIcon logo = new ImageIcon("Adobe Express - file.png");
+    ImageIcon logo = new ImageIcon("logo.png");
     
     MyFrame(){
         //Titulo
