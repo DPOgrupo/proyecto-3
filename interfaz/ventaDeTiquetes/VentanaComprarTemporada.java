@@ -32,8 +32,10 @@ public class VentanaComprarTemporada extends MyFrame {
                 int cantidad = Integer.parseInt(campoCantidad.getText());
 
                 taquilla.venderTiqueteTemporada(cliente, cat, unidad, cantidad, false);
+                
                 JOptionPane.showMessageDialog(this, "Tiquete de temporada comprado.");
             } catch (Exception ex) {
+            	
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
         });
