@@ -3,10 +3,16 @@
     "login": "Yago",
     "nombre": "Santiago Rojas",
     "contrasena": "Lucas1226",
-    "dinero": 300000,
+    "dinero": 225000,
     "edad": 18,
     "restSalud": false,
-    "tiquetesRegulares": [],
+    "tiquetesRegulares": [
+      {
+        "usado": true,
+        "categoria": "ORO",
+        "id": "b30c52b6-e395-411f-98a0-a090c20ba484"
+      }
+    ],
     "tiquetesIndividuales": [],
     "tiquetesTemporada": [],
     "tiquetesFastPass": []
