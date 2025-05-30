@@ -1,101 +1,132 @@
 package Swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.ImageIcon;
-
-import java.awt.event.ActionEvent;
+import javax.swing.border.Border;
 
 public class Principal {
+    public static void main(String[] args) {
+        // Inicialización del menú principal
+        MyFrame menuPrincipal = new MyFrame();
+        menuPrincipal.setTitle("Menu Principal");
+        menuPrincipal.setSize(600, 650);
+        menuPrincipal.getContentPane().setBackground(new Color(0xD0DDD0));
+        menuPrincipal.setLayout(null);
+        
+        // Logo del menú
+        MyLabel menulogo = new MyLabel();
+        Border border = BorderFactory.createLineBorder(new Color(0x291392), 8);
+        menulogo.setBorder(border);
+        int labelWidth = 325;
+        int labelHeight = 300;
+        menulogo.setSize(labelWidth, labelHeight);
+        int frameWidth = 600;
+        int x = (frameWidth - labelWidth) / 2;
+        int y = 30;
+        menulogo.setBounds(x, y, labelWidth, labelHeight);
+        ImageIcon imagenMenu = new ImageIcon("MenuLogo.png");
+        menulogo.setIcon(imagenMenu);
+        
+        // Texto de rol
+        JLabel textoRol = new JLabel("¿Cómo deseas ingresar?");
+        textoRol.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));  
+        textoRol.setForeground(new Color(0x2C3E50));         
+        textoRol.setHorizontalAlignment(JLabel.CENTER);      
+        int textoWidth = 300;
+        int textoHeight = 40;
+        int textoX = (frameWidth - textoWidth) / 2;          
+        int textoY = y + labelHeight + 20;                  
+        textoRol.setBounds(textoX, textoY, textoWidth, textoHeight);
 
-	public static void main(String[ ] args) {
-
-		//inicioSecion
-		MyFrame menu = new MyFrame();
-	    menu.setTitle("Menu");
-	    menu.setSize(550,600);
-	    
-        // Cambiar el background del ContentPane
-        //inicioSecion.getContentPane().setBackground(new Color(0xBCEDF6));
-	
-	    //Label
-	    
-	    MyLabel AventuraMax = new MyLabel();
-	    
-	    AventuraMax.setBackground(new Color(0xBCEDF6));
-	    AventuraMax.setSize(400,250);
-	    ImageIcon logo = new ImageIcon("Adobe Express - file.png");
-	    AventuraMax.setIcon(logo);
-	    
-	    
-	    
-	    //Botones
-	    	
-	    MyButton BIniciarSecion = new MyButton();
-	    BIniciarSecion.setText("Iniciar Secion");
-	    						//x , y ,  tamaño x , tamaño y
-		BIniciarSecion.setBounds(150,350,200,50);
-		
-	    //Accion Iniciar Secion
-        BIniciarSecion.addActionListener(new ActionListener() {
+        // Botón Cliente
+        MyButton BCliente = new MyButton();
+        BCliente.setText("Cliente");
+        BCliente.setBounds(100, 400, 200, 50);
+        BCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            		MyFrame frameIniciar = new MyFrame();
-            		frameIniciar.setSize(500,500);
-            		frameIniciar.setVisible(true);
-            		frameIniciar.setTitle("Iniciar Secion");
+                Menu menuCliente = new Menu();
+                menuCliente.setTitle("Menu Cliente");
             }
         });
         
-        //CrearCuenta
-        MyButton BCrearCuenta = new MyButton();
-        BCrearCuenta.setText("Crear Cuenta");
-        BCrearCuenta.setBounds(150,450,200,50);
-        BCrearCuenta.addActionListener(new ActionListener() {
+        // Botón Empleado
+        MyButton BEmpleado = new MyButton();
+        BEmpleado.setText("Empleado");
+        BEmpleado.setBounds(325, 400, 200, 50);
+        BEmpleado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Crear menú personalizado para empleado
             	
             	
+                MyFrame menuEmpleado = new MyFrame();
+            
+                menuEmpleado.setTitle("Menu Empleado");
+                menuEmpleado.setSize(550, 600);
+                menuEmpleado.setLayout(null);
+
+		        menuEmpleado.getContentPane().setBackground(new Color(0xfcfbfc));
                 
+                // Imagen del empleado
+                MyLabel imagenEmpleado = new MyLabel();
+                
+                Border border = BorderFactory.createLineBorder(new Color (78, 22 , 23) , 0);
+                imagenEmpleado.setBorder(border);
+                
+                imagenEmpleado.setBounds(130, 50, 300, 300); // Posición y tamaño definidos
+                ImageIcon logoEmpleado = new ImageIcon("empleadoImagen.png");
+                imagenEmpleado.setIcon(logoEmpleado);
+                
+                //BOTON EMPELADO INICIAR SECION
+                MyButton BIniciarSecion = new MyButton();
+			    BIniciarSecion.setText("Iniciar Secion");
+			    						//x , y ,  tamaño x , tamaño y
+				BIniciarSecion.setBounds(180,370,200,50);
+
+				BIniciarSecion.setBackground(new Color(0xFF392C));
+				
+			    //Accion Iniciar Secion
+		        BIniciarSecion.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		            		MyFrame frameIniciar = new MyFrame();
+		            		frameIniciar.setSize(500,500);
+		            		frameIniciar.setVisible(true);
+		            		frameIniciar.setTitle("Iniciar Secion");
+		            }
+		        });
+                
+                
+                
+                // Agregar componentes y mostrar
+		        menuEmpleado.add(BIniciarSecion);
+                menuEmpleado.add(imagenEmpleado);
+                menuEmpleado.setVisible(true);
             }
         });
         
-        
-        /*
-        //Boton Mapa
-        MyButton BMapa = new MyButton();
-        BMapa.setText("MAPA");
-        BMapa.setBounds(150,550,200,50);
-        BMapa.addActionListener(new ActionListener() {
+        // Botón Administrador
+        MyButton BAdmin = new MyButton();
+        BAdmin.setText("Administrador");
+        BAdmin.setBounds(210, 500, 200, 50);
+        BAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Crear frame para el mapa
-                JFrame frameMapa = new JFrame("Mapa");
-                frameMapa.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                
-                // Crear label con la imagen
-                JLabel labelMapa = new JLabel();
-                ImageIcon imagenMapa = new ImageIcon("mapa1.png");
-                labelMapa.setIcon(imagenMapa);
-                
-                // El frame se ajusta al tamaño de la imagen
-                frameMapa.add(labelMapa);
-                frameMapa.pack(); // Ajusta automáticamente el tamaño
-                frameMapa.setLocationRelativeTo(null); // Centra la ventana en la pantalla
-                frameMapa.setVisible(true);
+                Menu menuAdmin = new Menu();
+                menuAdmin.setTitle("Menu Administrador");
             }
         });
-        */
         
-        
-        
-        
-        menu.add(AventuraMax);
-        
-	    menu.add(BCrearCuenta);
-	    menu.add(BIniciarSecion);
-		menu.setVisible(true);
-	}
+        // Agregar todos los componentes al frame principal
+        menuPrincipal.add(menulogo);
+        menuPrincipal.add(textoRol);
+        menuPrincipal.add(BCliente);
+        menuPrincipal.add(BEmpleado);
+        menuPrincipal.add(BAdmin);
+        menuPrincipal.setVisible(true);
+    }
 }

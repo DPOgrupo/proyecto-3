@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class MyFrame extends JFrame {
-    ImageIcon logo = new ImageIcon("logo.png");
+    ImageIcon logo = new ImageIcon("Adobe Express - file.png");
     
     MyFrame(){
         //Titulo
@@ -17,5 +17,8 @@ public class MyFrame extends JFrame {
         
         // Centrar en la pantalla
         this.setLocationRelativeTo(null);
+        
+        //para que se cirren todas las paginas al tiempo
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 }
