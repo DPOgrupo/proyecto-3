@@ -1,14 +1,12 @@
 package Cliente;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
-
 import persistencia.*;
 
-public class Principal {
-    public static void main(String[] args) {
+public class MenuCliente {
 
+    public static void mostrar() {
         MyFrame menu = new MyFrame();
         menu.setTitle("Menú Principal");
         menu.setSize(550, 600);
@@ -19,13 +17,11 @@ public class Principal {
         ImageIcon logo = new ImageIcon("logo.png");
         AventuraMax.setIcon(logo);
 
-        // Botón Iniciar sesión
         MyButton BIniciarSecion = new MyButton();
         BIniciarSecion.setText("Iniciar Sesión");
         BIniciarSecion.setBounds(150, 350, 200, 50);
         BIniciarSecion.addActionListener(e -> VentanaLogin.mostrar(menu));
 
-        // Botón Crear cuenta
         MyButton BCrearCuenta = new MyButton();
         BCrearCuenta.setText("Crear Cuenta");
         BCrearCuenta.setBounds(150, 450, 200, 50);
@@ -35,5 +31,9 @@ public class Principal {
         menu.add(BCrearCuenta);
         menu.add(BIniciarSecion);
         menu.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        mostrar();
     }
 }

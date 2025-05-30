@@ -43,11 +43,12 @@ public class BotonesCliente extends JPanel {
 
         MyButton btnSalir = new MyButton();
         btnSalir.setText("Salir");
-        btnSalir.setBounds(150, 310, 200, 40);
+        btnSalir.setBounds(150, 110, 200, 40);
         btnSalir.addActionListener(e -> AccionesCliente.salirYGuardar(frame, adminTiquetes, adminAtr));
 
-     // Dentro de BotonesCliente
 
+
+        // Acción del botón Entrar al Parque
         btnEntrar.addActionListener(e -> {
             if (!haEntrado) {
                 java.util.List<Tiquete> tiquetes = cliente.getTiquetes();
@@ -57,7 +58,6 @@ public class BotonesCliente extends JPanel {
                     return;
                 }
 
-                // Crear opciones para el combo box
                 Tiquete[] opciones = tiquetes.toArray(new Tiquete[0]);
                 Tiquete seleccionado = (Tiquete) JOptionPane.showInputDialog(
                     frame,
@@ -69,9 +69,7 @@ public class BotonesCliente extends JPanel {
                     opciones[0]
                 );
 
-                if (seleccionado == null) {
-                	return; 
-                }
+                if (seleccionado == null) return;
 
                 boolean permitirEntrada = false;
 
@@ -94,21 +92,18 @@ public class BotonesCliente extends JPanel {
                     }
 
                 } else if (seleccionado instanceof TiqueteFastPass || seleccionado instanceof TiqueteTemporada) {
-                    // Validar rango de fechas o accesos
-                    if (seleccionado.esValidoPara("")) { // Puedes pasar el id de alguna atracción dummy o cambiar este método
+                    if (seleccionado.esValidoPara("")) {
                         permitirEntrada = true;
                     } else {
-                        JOptionPane.showMessageDialog(frame, "Este tiquete no está dentro del rango permitido.");
+                        JOptionPane.showMessageDialog(frame, "Este tiquete no está dentro del rango de fechas.");
                     }
-
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Tipo de tiquete no reconocido.");
                 }
 
                 if (permitirEntrada) {
                     haEntrado = true;
 
-                    // Mostrar botones adicionales
+                    remove(btnEntrar);
+
                     add(btnUsar);
                     add(btnTienda);
                     add(btnCafe);
@@ -119,5 +114,6 @@ public class BotonesCliente extends JPanel {
                 }
             }
         });
+
 }
 }

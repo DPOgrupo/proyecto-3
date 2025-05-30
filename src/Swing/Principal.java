@@ -1,11 +1,19 @@
 package Swing;
-import java.awt.BorderLayout;
+
+
+
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.border.Border;
+
+import Cliente.MenuCliente;
 
 public class Principal {
     public static void main(String[] args) {
@@ -48,8 +56,7 @@ public class Principal {
         BCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Menu menuCliente = new Menu();
-                menuCliente.setTitle("Menu Cliente");
+            	MenuCliente.mostrar(); 
             }
         });
         
