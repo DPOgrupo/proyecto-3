@@ -29,7 +29,9 @@ public class VentanaComprarFastPass extends MyFrame {
 
                 taquilla.venderTiqueteFastPass(cliente, unidad, cantidad, false);
                 JOptionPane.showMessageDialog(this, "Tiquete FastPass comprado.");
+                
             } catch (Exception ex) {
+            	
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
         });

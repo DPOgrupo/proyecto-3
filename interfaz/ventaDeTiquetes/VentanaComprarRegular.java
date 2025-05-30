@@ -24,10 +24,13 @@ public class VentanaComprarRegular extends MyFrame {
         comprar.addActionListener(e -> {
             try {
                 String seleccion = (String) combo.getSelectedItem();
+                
                 CategoriaExclusividad cat = CategoriaExclusividad.valueOf(seleccion);
                 taquilla.venderTiqueteRegular(cliente, cat, false);
+                
                 JOptionPane.showMessageDialog(this, "Tiquete regular comprado.");
             } catch (Exception ex) {
+            	
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
         });
