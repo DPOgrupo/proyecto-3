@@ -1,4 +1,4 @@
-package interfaz;
+package Cliente;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -19,7 +19,7 @@ public class VentanaCliente {
         MyLabel logo = new MyLabel();
         logo.setBackground(new Color(0xBCEDF6));
         logo.setSize(400, 250);
-        logo.setIcon(new ImageIcon("Adobe Express - file.png"));
+        logo.setIcon(new ImageIcon("logo.png"));
 
         // Panel de botones
         BotonesCliente panel = new BotonesCliente(frame, cliente, adminTiquetes, adminAtr);

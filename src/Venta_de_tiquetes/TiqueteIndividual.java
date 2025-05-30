@@ -6,6 +6,8 @@ public class TiqueteIndividual extends Tiquete {
 
 	private String atraccionAsosiada;
 	private boolean usado;
+	private boolean entro; 
+
 	
     public TiqueteIndividual() {
 		super(CategoriaExclusividad.BASICO);
@@ -17,6 +19,17 @@ public class TiqueteIndividual extends Tiquete {
 		this.atraccionAsosiada = atraccionAsosiada; 
 		this.usado = false;
 	}
+	
+	
+	public void salioDelparque() {
+		this.entro = true; 
+	}
+	
+	public boolean Isadentro(){
+		return entro;
+	}
+	
+	
 	
 	@Override
 	public boolean esValidoPara(String idAtraccion) {

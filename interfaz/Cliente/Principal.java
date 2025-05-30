@@ -1,4 +1,4 @@
-package interfaz;
+package Cliente;
 
 import java.awt.Color;
 
@@ -16,7 +16,7 @@ public class Principal {
         MyLabel AventuraMax = new MyLabel();
         AventuraMax.setBackground(new Color(0xBCEDF6));
         AventuraMax.setSize(400, 250);
-        ImageIcon logo = new ImageIcon("Adobe Express - file.png");
+        ImageIcon logo = new ImageIcon("logo.png");
         AventuraMax.setIcon(logo);
 
         // Botón Iniciar sesión

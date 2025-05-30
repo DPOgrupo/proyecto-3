@@ -41,7 +41,7 @@
     "login": "hola",
     "nombre": "hola",
     "contrasena": "hola",
-    "dinero": 895000,
+    "dinero": 0,
     "edad": 1,
     "restSalud": false,
     "tiquetesRegulares": [
@@ -64,6 +64,61 @@
         "usado": true,
         "categoria": "ORO",
         "id": "a2c5f6bd-ef52-41b8-91a7-5113e8a16622"
+      },
+      {
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "25af01b1-6071-4eb9-b720-963fec3f9107"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "d9ecef71-77f8-454f-9652-bda8a01b4fc7"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "41944ae3-be53-46a5-a7c5-851dde3db6c6"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "d624d37e-7229-4b1e-9432-037a78a9496b"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "2557da9c-aaea-4bca-a24c-b7eb02a466c3"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "da7a07bd-e7e9-46ed-a2f8-bb40a0557b79"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "527d4577-b10d-4c4b-8b7c-f2c20c112fb6"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "cd9eaf41-fb72-48b2-aa24-a7d73675b96b"
+      },
+      {
+        "usado": false,
+        "categoria": "DIAMANTE",
+        "id": "ac7a2465-d1b0-45e3-bd75-e1f76228aec6"
+      },
+      {
+        "usado": false,
+        "categoria": "ORO",
+        "id": "82384a77-b500-4f77-8a31-51d4bd0f4094"
+      },
+      {
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "a53d7a6a-40fa-4d0f-852d-4b88cf394b5f"
       }
     ],
     "tiquetesIndividuales": [],

@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import AtraccionesYServicio.AdministradorAtraccionesYLugares;
+import Cliente.MyButton;
+import Cliente.MyFrame;
 import Venta_de_tiquetes.*;
-import interfaz.MyButton;
-import interfaz.MyFrame;
 
 public class VentanaVentaTiquetes extends MyFrame {
 

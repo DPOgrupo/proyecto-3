@@ -7,9 +7,9 @@ import java.util.List;
 
 import AtraccionesYServicio.AdministradorAtraccionesYLugares;
 import AtraccionesYServicio.Atraccion;
+import Cliente.MyButton;
+import Cliente.MyFrame;
 import Venta_de_tiquetes.*;
-import interfaz.MyButton;
-import interfaz.MyFrame;
 
 public class VentanaComprarIndividual extends MyFrame {
 

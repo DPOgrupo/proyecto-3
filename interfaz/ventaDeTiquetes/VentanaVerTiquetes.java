@@ -1,11 +1,13 @@
 package ventaDeTiquetes;
 
 import javax.swing.*;
+
+import Cliente.MyFrame;
+
 import java.awt.*;
 import java.io.File;
 import Venta_de_tiquetes.Cliente;
 import Venta_de_tiquetes.Tiquete;
-import interfaz.MyFrame;
 
 public class VentanaVerTiquetes extends MyFrame {
 

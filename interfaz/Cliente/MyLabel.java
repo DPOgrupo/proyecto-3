@@ -1,4 +1,4 @@
-package interfaz;
+package Cliente;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.border.Border;
