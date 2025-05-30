@@ -36,5 +36,38 @@
       }
     ],
     "tiquetesFastPass": []
+  },
+  {
+    "login": "hola",
+    "nombre": "hola",
+    "contrasena": "hola",
+    "dinero": 895000,
+    "edad": 1,
+    "restSalud": false,
+    "tiquetesRegulares": [
+      {
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "2e7b1416-c084-411c-9da5-4bfc2d2656f1"
+      },
+      {
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "273654b4-2c3d-4f07-87cf-88eefda2a796"
+      },
+      {
+        "usado": false,
+        "categoria": "BASICO",
+        "id": "c957c771-1d57-48f1-a045-eb43f7ca3cc2"
+      },
+      {
+        "usado": true,
+        "categoria": "ORO",
+        "id": "a2c5f6bd-ef52-41b8-91a7-5113e8a16622"
+      }
+    ],
+    "tiquetesIndividuales": [],
+    "tiquetesTemporada": [],
+    "tiquetesFastPass": []
   }
 ]
