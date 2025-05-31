@@ -1,43 +1,26 @@
 package admin;
 
 import javax.swing.*;
-import java.awt.*;
 import AtraccionesYServicio.AdministradorAtraccionesYLugares;
 
-public class VentanaCrearCafeteria extends JFrame {
+public class VentanaCrearCafeteria {
 
     public VentanaCrearCafeteria(AdministradorAtraccionesYLugares adminAtr) {
-        setTitle("VentanaCrearCafeteria");
-        setSize(500, 200);
-        setLayout(new GridLayout(3, 2, 10, 10));
-        setLocationRelativeTo(null);
-
-        JLabel lblComidas = new JLabel("Comidas:");
         JTextField txtComidas = new JTextField();
 
-        JButton btnAceptar = new JButton("Aceptar");
-        JButton btnCancelar = new JButton("Cancelar");
+        Object[] campos = {
+            "Cantidad de comidas:", txtComidas
+        };
 
-        btnAceptar.addActionListener(e -> {
-            String txt = txtComidas.getText().trim();
-            if (txt.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Comidas requerido.");
-                return;
+        int opcion = JOptionPane.showConfirmDialog(null, campos, "Crear Cafetería", JOptionPane.OK_CANCEL_OPTION);
+        if (opcion == JOptionPane.OK_OPTION) {
+            try {
+                int comidas = Integer.parseInt(txtComidas.getText().trim());
+                adminAtr.crearCafeteria(comidas);
+                JOptionPane.showMessageDialog(null, "Cafetería creada exitosamente.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Entrada inválida.");
             }
-
-            int comidas = Integer.parseInt(txt);
-            adminAtr.crearCafeteria(comidas);
-            JOptionPane.showMessageDialog(this, "Operación exitosa.");
-            dispose();
-        });
-
-        btnCancelar.addActionListener(e -> dispose());
-
-        add(lblComidas);
-        add(txtComidas);
-        add(btnAceptar);
-        add(btnCancelar);
-
-        setVisible(true);
+        }
     }
 }

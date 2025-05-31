@@ -102,7 +102,7 @@ public class BotonesAdmin extends JPanel {
         MyButton btnSalir = new MyButton();
         btnSalir.setText("Salir");
         btnSalir.setBounds(175, 220, 200, 40);
-        btnSalir.setVisible(false);
+        btnSalir.setVisible(true);
         btnSalir.addActionListener(e -> AccionesAdmin.salirYGuardar(frame, adminTiquetes, adminAtr,adminEmp));
         add(btnSalir);
         
@@ -167,11 +167,11 @@ public class BotonesAdmin extends JPanel {
         });
         
         btnVolverMenu.addActionListener(e -> {
-            for (Component c : getComponents()) {
+            for (Component cadaComponente : getComponents()) {
             	
             	//quitar menos los del menu
-                if (c instanceof MyButton && c != btnGestionarEmpleados && c != btnCrearLugares) {
-                    c.setVisible(false);
+                if (cadaComponente instanceof MyButton && cadaComponente != btnGestionarEmpleados && cadaComponente != btnCrearLugares && cadaComponente != btnSalir) {
+                	cadaComponente.setVisible(false);
                 }
             }
 
