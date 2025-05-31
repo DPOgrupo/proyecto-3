@@ -167,6 +167,8 @@ public class Principal {
             }
         });
         
+        
+        //PORFA SIRVEEEE
         // Agregar todos los componentes al frame principal
         menuPrincipal.add(menulogo);
         menuPrincipal.add(textoRol);
