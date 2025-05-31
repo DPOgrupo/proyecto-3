@@ -53,7 +53,7 @@ public class VentanaLogin {
             if ((login.trim().equals("admin")) && (pass.trim().equals("123"))) {
                 loginFrame.dispose();
                 frameAnterior.dispose();
-                VentanaAdmin.mostrar(c, adminTiquetes, adminAtr);
+                VentanaAdmin.mostrar(c, adminTiquetes, adminAtr,adminEmple);
             } else {
                 JOptionPane.showMessageDialog(null, "login o contraseña incorrecta.");
             }

@@ -15,5 +15,22 @@
     "idAtraccion": "Museo",
     "temporada": "Todo el año",
     "disponible": false
+  },
+  {
+    "edadMin": 1,
+    "restriccionClima": "a",
+    "ubicacionFija": "a",
+    "cupoMaximo": 2,
+    "minEmpleadosEncargados": 1,
+    "nivelExclusividad": 1,
+    "danado": false,
+    "nivelDeRiesgo": "a",
+    "clientes": [],
+    "cajerosAsociados": [],
+    "cocinerosAsociados": [],
+    "serviciosAsociados": [],
+    "idAtraccion": "aaa",
+    "temporada": "a",
+    "disponible": false
   }
 ]

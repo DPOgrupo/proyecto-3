@@ -10,7 +10,7 @@ import Empleados.*;
 
 public class VentanaAdmin {
 
-    public static void mostrar(Cliente cliente, AdministradorTiquetes adminTiquetes, AdministradorAtraccionesYLugares adminAtr) {
+    public static void mostrar(Cliente cliente, AdministradorTiquetes adminTiquetes, AdministradorAtraccionesYLugares adminAtr, AdministradorEmpleados adminEmple) {
         MyFrame frame = new MyFrame();
         frame.setTitle("Menú Cliente - " + cliente.getNombre());
         frame.setSize(550, 600);
@@ -22,7 +22,7 @@ public class VentanaAdmin {
         logo.setIcon(new ImageIcon("logo.png"));
 
         // Panel de botones
-        BotonesAdmin panel = new BotonesAdmin(frame, cliente, adminTiquetes, adminAtr);
+        BotonesAdmin panel = new BotonesAdmin(frame, cliente, adminTiquetes, adminAtr,adminEmple);
 
         frame.add(logo);
         frame.add(panel);
