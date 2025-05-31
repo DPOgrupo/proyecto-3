@@ -19,7 +19,7 @@ public class AdministradorEmpleados {
 	private boolean turnoGlobalNocturno;
 
 
-	public AdministradorEmpleados(String login, String contraseña) {
+	public AdministradorEmpleados(String login2, String pass) {
 	    this.login = login;
 	    this.contraseña = contraseña;
 	    this.cajeros = new ArrayList<>();
@@ -31,7 +31,12 @@ public class AdministradorEmpleados {
 	}
 
     
-    public String getContraseña() {
+    public AdministradorEmpleados() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public String getContraseña() {
         return contraseña;
     }
     

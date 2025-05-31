@@ -92,7 +92,7 @@ public class Principal {
                 
                 //BOTON EMPELADO INICIAR SECION
                 MyButton BIniciarSecion = new MyButton();
-			    BIniciarSecion.setText("Iniciar Secion");
+			    BIniciarSecion.setText(" MENU EMPLEADO");
 			    						//x , y ,  tamaño x , tamaño y
 				BIniciarSecion.setBounds(180,370,200,50);
 

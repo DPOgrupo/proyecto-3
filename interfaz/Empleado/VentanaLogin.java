@@ -3,9 +3,8 @@ import javax.swing.*;
 import AtraccionesYServicio.*;
 import Venta_de_tiquetes.*;
 import Empleados.*;
-import persistencia.PersistenciaAtraccionesYLugares;
-import persistencia.PersistenciaClientes;
 import persistencia.PersistenciaEmpleados;
+import persistencia.PersistenciaAtraccionesYLugares;
 
 public class VentanaLogin {
     public static void mostrar(MyFrame frameAnterior) {
@@ -17,7 +16,7 @@ public class VentanaLogin {
         JPasswordField espacioContraseña = new JPasswordField();
         
         // Crear combo box para tipo de usuario
-        String[] tiposUsuario = {"Cliente", "Cajero", "Cocinero", "Servicio General"};
+        String[] tiposUsuario = {"Cajero", "Cocinero", "Servicio General"};
         JComboBox<String> comboTipoUsuario = new JComboBox<>(tiposUsuario);
         
         Object[] mensaje = {
@@ -43,14 +42,12 @@ public class VentanaLogin {
             }
             
             // Cargar persistencia
-            PersistenciaClientes persistClientes = new PersistenciaClientes();
             PersistenciaAtraccionesYLugares persistAtr = new PersistenciaAtraccionesYLugares();
             AdministradorTiquetes adminTiquetes = new AdministradorTiquetes();
             AdministradorAtraccionesYLugares adminAtr = new AdministradorAtraccionesYLugares();
-            AdministradorEmpleados adminEmpleados = new AdministradorEmpleados(tipoUsuario, tipoUsuario);
+            AdministradorEmpleados adminEmpleados = new AdministradorEmpleados();
             
             // Cargar datos
-            adminTiquetes.setClientesRegistrados(persistClientes.cargarClientes());
             persistAtr.cargarDatos(adminAtr);
             PersistenciaEmpleados.cargarEmpleados(adminEmpleados);
             
@@ -62,16 +59,6 @@ public class VentanaLogin {
             boolean loginExitoso = false;
             
             switch (tipoUsuario) {
-                case "Cliente":
-                    Cliente cliente = validarCliente(login, pass, adminTiquetes);
-                    if (cliente != null) {
-                        loginExitoso = true;
-                        loginFrame.dispose();
-                        frameAnterior.dispose();
-                        //VentanaCliente.mostrar(cliente, adminTiquetes, adminAtr);
-                    }
-                    break;
-                    
                 case "Cajero":
                     Cajero cajero = validarCajero(login, pass, adminEmpleados);
                     if (cajero != null) {
@@ -82,7 +69,15 @@ public class VentanaLogin {
                     }
                     break;
                     
-               
+                case "Cocinero":
+                    Cocinero cocinero = validarCocinero(login, pass, adminEmpleados);
+                    if (cocinero != null) {
+                        loginExitoso = true;
+                        loginFrame.dispose();
+                        frameAnterior.dispose();
+                        VentanaMostrarEmpleado.mostrarCocinero(cocinero, adminEmpleados, adminTiquetes, adminAtr);
+                    }
+                    break;
                     
                 case "Servicio General":
                     ServicioGeneral servicio = validarServicioGeneral(login, pass, adminEmpleados);
@@ -100,15 +95,6 @@ public class VentanaLogin {
                 mostrar(frameAnterior); // Volver a mostrar la ventana para otro intento
             }
         }
-    }
-    
-    private static Cliente validarCliente(String login, String pass, AdministradorTiquetes adminTiquetes) {
-        for (Cliente c : adminTiquetes.getClientesRegistrados()) {
-            if (c.getLogin().equals(login) && c.getContrasena().equals(pass)) {
-                return c;
-            }
-        }
-        return null;
     }
     
     private static Cajero validarCajero(String login, String pass, AdministradorEmpleados adminEmpleados) {
