@@ -124,6 +124,11 @@ public class AdministradorAtraccionesYLugares {
 		this.espectaculos = espectaculos2; 
 	}
 
+	public Atraccion[] getAtracciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 

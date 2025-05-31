@@ -30,6 +30,10 @@ public class ServicioGeneral extends Empleado {
 	@Override
 	public void cobrar(int precio, int cantidad, Cliente cliente) {		
 	}
+	public void mantener(Atraccion atraccion) {
+		// TODO Auto-generated method stub
+		System.out.println("Manteniendo...");
+	}
 	
 }
 

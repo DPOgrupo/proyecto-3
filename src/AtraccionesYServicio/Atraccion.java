@@ -212,5 +212,10 @@ public abstract class Atraccion extends AtraccionOEspectaculo {
 
 
 
-	public abstract boolean cumpleRestricciones(Venta_de_tiquetes.Cliente cliente); 
+	public abstract boolean cumpleRestricciones(Venta_de_tiquetes.Cliente cliente);
+
+	public int getPrecio() {
+		// TODO Auto-generated method stub
+		return 0;
+	} 
 }

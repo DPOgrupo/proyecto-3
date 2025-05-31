@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import Cliente.MenuCliente;
+import Empleado.MenuEmpleado;
+import Empleado.VentanaLogin;
 
 public class Principal {
     public static void main(String[] args) {
@@ -90,7 +92,7 @@ public class Principal {
                 
                 //BOTON EMPELADO INICIAR SECION
                 MyButton BIniciarSecion = new MyButton();
-			    BIniciarSecion.setText("Iniciar Secion");
+			    BIniciarSecion.setText(" MENU EMPLEADO");
 			    						//x , y ,  tamaño x , tamaño y
 				BIniciarSecion.setBounds(180,370,200,50);
 
@@ -100,10 +102,8 @@ public class Principal {
 		        BIniciarSecion.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
-		            		MyFrame frameIniciar = new MyFrame();
-		            		frameIniciar.setSize(500,500);
-		            		frameIniciar.setVisible(true);
-		            		frameIniciar.setTitle("Iniciar Secion");
+		            	MenuEmpleado.mostrar();
+		            		
 		            }
 		        });
                 
@@ -167,6 +167,8 @@ public class Principal {
             }
         });
         
+        
+        //PORFA SIRVEEEE
         // Agregar todos los componentes al frame principal
         menuPrincipal.add(menulogo);
         menuPrincipal.add(textoRol);
