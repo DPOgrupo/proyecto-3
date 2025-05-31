@@ -1,52 +1,33 @@
 package admin;
 
 import javax.swing.*;
-import java.awt.*;
 import Empleados.AdministradorEmpleados;
 import persistencia.PersistenciaEmpleados;
 
-public class VentanaCrearCajero extends JFrame {
+public class VentanaCrearCajero {
 
     public VentanaCrearCajero(AdministradorEmpleados adminEmp) {
-        setTitle("VentanaCrearCajero");
-        setSize(500, 250);
-        setLayout(new GridLayout(4, 2, 10, 10));
-        setLocationRelativeTo(null);
+        JTextField login = new JTextField();
+        JPasswordField pass = new JPasswordField();
 
-        JLabel lblLogin = new JLabel("Login:");
-        JTextField txtLogin = new JTextField();
-        JLabel lblContraseña = new JLabel("Contraseña:");
-        JTextField txtContraseña = new JTextField();
+        Object[] campos = {
+            "Login:", login,
+            "Contraseña:", pass
+        };
 
-        JButton btnAceptar = new JButton("Aceptar");
-        JButton btnCancelar = new JButton("Cancelar");
+        int opcion = JOptionPane.showConfirmDialog(null, campos, "Crear Cajero", JOptionPane.OK_CANCEL_OPTION);
+        if (opcion == JOptionPane.OK_OPTION) {
+            String user = login.getText();
+            String pwd = new String(pass.getPassword());
 
-        btnAceptar.addActionListener(e -> {
-            String login = txtLogin.getText();
-            String contraseña = txtContraseña.getText();
-            if (login.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Login requerido."); return;
+            if (user.isEmpty() || pwd.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
+                return;
             }
-            if (contraseña.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Contraseña requerido."); return;
-            }
-            adminEmp.crearCajero(login, contraseña);
-            PersistenciaEmpleados.cargarEmpleados(adminEmp);
 
-            JOptionPane.showMessageDialog(this, "Operación exitosa.");
-            dispose();
-        });
-
-        btnCancelar.addActionListener(e -> dispose());
-
-        add(lblLogin);
-        add(txtLogin);
-        add(lblContraseña);
-        add(txtContraseña);
-
-        add(btnAceptar);
-        add(btnCancelar);
-
-        setVisible(true);
+            adminEmp.crearCajero(user, pwd);
+            PersistenciaEmpleados.guardarEmpleados(adminEmp);
+            JOptionPane.showMessageDialog(null, "Cajero creado exitosamente.");
+        }
     }
 }

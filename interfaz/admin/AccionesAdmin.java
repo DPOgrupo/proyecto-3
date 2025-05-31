@@ -122,12 +122,15 @@ public class AccionesAdmin {
         }
     }
 
-    public static void salirYGuardar(JFrame frame, AdministradorTiquetes adminTiquetes, AdministradorAtraccionesYLugares adminAtr) {
+    public static void salirYGuardar(JFrame frame, AdministradorTiquetes adminTiquetes, AdministradorAtraccionesYLugares adminAtr, AdministradorEmpleados adminEmp) {
         PersistenciaClientes persistClientes = new PersistenciaClientes();
         PersistenciaAtraccionesYLugares persistAtr = new PersistenciaAtraccionesYLugares();
 
         persistClientes.guardarClientes(adminTiquetes.getClientesRegistrados());
         persistAtr.guardarDatos(adminAtr);
+        PersistenciaEmpleados.guardarEmpleados(adminEmp);
+
+
 
         JOptionPane.showMessageDialog(frame, "Datos correctamente guardados.");
         frame.dispose();

@@ -1,8 +1,8 @@
 [
   {
     "ID": 1,
-    "login": "cajero1",
-    "contraseña": "pass1",
+    "login": "hola",
+    "contraseña": "raaah",
     "capacitaciones": [],
     "turnosAsignados": [],
     "dinero": 0

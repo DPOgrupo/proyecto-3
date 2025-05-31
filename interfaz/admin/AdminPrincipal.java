@@ -18,7 +18,8 @@ public class AdminPrincipal {
 	        menu.setSize(550, 600);
 
 	        MyLabel AventuraMax = new MyLabel();
-	        AventuraMax.setBackground(new Color(0xBCEDF6));
+	        AventuraMax.setBackground(new Color(0xFF392C));
+
 	        AventuraMax.setSize(400, 250);
 	        ImageIcon logo = new ImageIcon("logo.png");
 	        AventuraMax.setIcon(logo);

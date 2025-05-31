@@ -7,6 +7,7 @@ import Empleados.AdministradorEmpleados;
 import Venta_de_tiquetes.*;
 import persistencia.PersistenciaAtraccionesYLugares;
 import persistencia.PersistenciaClientes;
+import persistencia.PersistenciaEmpleados;
 
 public class VentanaLogin {
 
@@ -41,7 +42,10 @@ public class VentanaLogin {
             AdministradorAtraccionesYLugares adminAtr = new AdministradorAtraccionesYLugares();
             persistAtr.cargarDatos(adminAtr);
             
-            AdministradorEmpleados adminEmple = new AdministradorEmpleados(login, pass); 
+            AdministradorEmpleados adminEmple = new AdministradorEmpleados(login, pass);
+            PersistenciaEmpleados.cargarEmpleados(adminEmple);
+
+            
             
             AdministradorTiquetes adminTiq = new AdministradorTiquetes(); 
             

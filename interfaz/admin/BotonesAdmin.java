@@ -103,7 +103,7 @@ public class BotonesAdmin extends JPanel {
         btnSalir.setText("Salir");
         btnSalir.setBounds(175, 220, 200, 40);
         btnSalir.setVisible(false);
-        btnSalir.addActionListener(e -> AccionesAdmin.salirYGuardar(frame, adminTiquetes, adminAtr));
+        btnSalir.addActionListener(e -> AccionesAdmin.salirYGuardar(frame, adminTiquetes, adminAtr,adminEmp));
         add(btnSalir);
         
         //boton devolverse
