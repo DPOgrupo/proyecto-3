@@ -1,4 +1,4 @@
-package Empleado;
+package empleado;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import persistencia.*;

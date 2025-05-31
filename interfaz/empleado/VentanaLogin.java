@@ -1,4 +1,4 @@
-package Empleado;
+package empleado;
 import javax.swing.*;
 import AtraccionesYServicio.*;
 import Venta_de_tiquetes.*;

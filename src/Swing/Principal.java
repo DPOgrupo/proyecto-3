@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import Cliente.MenuCliente;
-import Empleado.MenuEmpleado;
-import Empleado.VentanaLogin;
+import empleado.MenuEmpleado;
+import empleado.VentanaLogin;
 
 public class Principal {
     public static void main(String[] args) {

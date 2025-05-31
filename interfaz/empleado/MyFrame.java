@@ -1,4 +1,4 @@
-package Empleado;
+package empleado;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
