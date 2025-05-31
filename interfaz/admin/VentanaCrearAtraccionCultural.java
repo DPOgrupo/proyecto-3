@@ -35,6 +35,7 @@ public class VentanaCrearAtraccionCultural {
                 String temporada = txtTemporada.getText().trim();
                 String ubicacion = txtUbicacion.getText().trim();
                 String clima = txtClima.getText().trim();
+                
                 int minEmp = Integer.parseInt(txtMinEmp.getText().trim());
                 int exclu = Integer.parseInt(txtExclu.getText().trim());
                 int edad = Integer.parseInt(txtEdad.getText().trim());
@@ -42,8 +43,10 @@ public class VentanaCrearAtraccionCultural {
                 String riesgo = txtRiesgo.getText().trim();
 
                 adminAtr.crearAtraccionCultural(nombre, temporada, ubicacion, clima, minEmp, exclu, edad, cupo, riesgo);
+                
                 JOptionPane.showMessageDialog(null, "Atracción cultural creada exitosamente.");
             } catch (Exception e) {
+            	
                 JOptionPane.showMessageDialog(null, "Error en los datos ingresados.");
             }
         }

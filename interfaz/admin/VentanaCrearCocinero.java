@@ -17,15 +17,15 @@ public class VentanaCrearCocinero {
 
         int opcion = JOptionPane.showConfirmDialog(null, campos, "Crear Cocinero", JOptionPane.OK_CANCEL_OPTION);
         if (opcion == JOptionPane.OK_OPTION) {
-            String user = login.getText();
-            String pwd = new String(pass.getPassword());
+            String usuario = login.getText();
+            String contraseña = new String(pass.getPassword());
 
-            if (user.isEmpty() || pwd.isEmpty()) {
+            if (usuario.isEmpty() || contraseña.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
                 return;
             }
 
-            adminEmp.crearCocinero(user, pwd);
+            adminEmp.crearCocinero(usuario, contraseña);
             PersistenciaEmpleados.cargarEmpleados(adminEmp);
             JOptionPane.showMessageDialog(null, "Cocinero creado exitosamente.");
         }

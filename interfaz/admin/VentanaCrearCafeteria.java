@@ -19,6 +19,7 @@ public class VentanaCrearCafeteria {
                 adminAtr.crearCafeteria(comidas);
                 JOptionPane.showMessageDialog(null, "Cafetería creada exitosamente.");
             } catch (Exception e) {
+            	
                 JOptionPane.showMessageDialog(null, "Entrada inválida.");
             }
         }

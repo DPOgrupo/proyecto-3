@@ -38,6 +38,7 @@ public class VentanaCrearAtraccionMecanica {
                 adminAtr.crearAtraccionMecanica(nombre, temporada, ubicacion, riesgo, cupo, minEmp, exclu);
                 JOptionPane.showMessageDialog(null, "Atracción mecánica creada exitosamente.");
             } catch (Exception e) {
+            	
                 JOptionPane.showMessageDialog(null, "Error en los datos ingresados.");
             }
         }

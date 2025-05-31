@@ -19,10 +19,12 @@ public class VentanaAsignarTurno extends JFrame {
         List<Empleado> empleados = new ArrayList<>();
         empleados.addAll(adminEmp.getCajeros());
         empleados.addAll(adminEmp.getCocineros());
+        
         empleados.addAll(adminEmp.getServicios());
 
         String[] opciones = new String[empleados.size()];
         for (int i = 0; i < empleados.size(); i++) {
+        	
             opciones[i] = empleados.get(i).getLogin();
         }
 
@@ -37,6 +39,7 @@ public class VentanaAsignarTurno extends JFrame {
         JRadioButton rServicio = new JRadioButton("Lugar de Servicio");
         ButtonGroup grupo = new ButtonGroup();
         grupo.add(rAtraccion);
+        
         grupo.add(rServicio);
 
         add(rAtraccion);
