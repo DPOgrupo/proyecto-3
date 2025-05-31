@@ -41,6 +41,16 @@ public class Cajero extends Empleado {
 		return this.ID;
 	}
 
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public char[] getSalario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 	
